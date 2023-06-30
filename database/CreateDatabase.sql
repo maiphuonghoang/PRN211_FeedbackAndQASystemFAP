@@ -27,7 +27,6 @@ CREATE TABLE Course
 (
 	courseId varchar(10) NOT NULL,
 	courseName nvarchar(100),
-	gender bit, 
 	CONSTRAINT PK_Course PRIMARY KEY (courseId)
  )
 
@@ -168,8 +167,8 @@ REFERENCES Question (questionId)
 -- ALTER TABLE Answer ADD CONSTRAINT PK_Answer PRIMARY KEY (answerId)
 -- ALTER TABLE Answer DROP CONSTRAINT FK_Answer_Instructor 
 -- ALTER TABLE Answer DROP COLUMN instructorId
--- ALTER TABLE Student ADD gender bit;
--- ALTER TABLE Instructor ADD gender bit;
+-- ALTER TABLE Student ADD gender bit
+-- ALTER TABLE Instructor ADD gender bit
 
 /*
 SELECT * FROM Student

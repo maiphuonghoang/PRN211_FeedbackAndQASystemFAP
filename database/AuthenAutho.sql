@@ -361,7 +361,7 @@ INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE17042
 INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170428@fpt.edu.vn','HE170428', N'Trần Quang Huy', 1);
 INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170444@fpt.edu.vn','HE170444', N'Lê Đức Hiếu', 1);
 INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170533@fpt.edu.vn','HE170533', N'Nguyễn Quang Lợi', 1);
-INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170842@fpt.edu.vn','HE170842', N'Nguyễn Thanh Hậu', 1);
+INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170842@fpt.edu.vn','HE170842', N'Nguyễn Thanh Hậu', 0);
 INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170863@fpt.edu.vn','HE170863', N'Nguyễn Thị Khánh Huyền', 0);
 INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170907@fpt.edu.vn','HE170907', N'Phạm Trường Giang', 1);
 INSERT INTO Student (accountId, studentId, studentName, gender) VALUES ('HE170996@fpt.edu.vn','HE170996', N'Khiếu Minh Đức', 1);
