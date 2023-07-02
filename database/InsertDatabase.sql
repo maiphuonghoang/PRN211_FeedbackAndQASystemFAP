@@ -524,3 +524,63 @@ INSERT INTO [Participate] ([studentId], [groupId]) VALUES ('HE163639', '10');
 INSERT INTO [Participate] ([studentId], [groupId]) VALUES ('HE163653', '10');
 INSERT INTO [Participate] ([studentId], [groupId]) VALUES ('HE163774', '10');
 INSERT INTO [Participate] ([studentId], [groupId]) VALUES ('HE163906', '10');
+
+INSERT INTO Status (statusId, statusName) VALUES(0, 'Processing');
+INSERT INTO Status (statusId, statusName) VALUES(1, 'Processed');
+
+SET DATEFORMAT ymd;
+SET IDENTITY_INSERT Question ON;
+INSERT INTO Question (questionId, groupId, studentId, questionTitle, questionSentTime, questionStatus, questionDescription, fileURL)
+VALUES
+(1, 15, 'HE171073', N'Chức năng AskMentor của FAP', '2023-06-28', 1, N'Mong thầy giải đáp thêm cho em về chức năng Q&A là với chức năng Ask mentor của trường mình hiện nay thì người trả lời những câu hỏi cho bọn em là bất kì thầy cô nào dạy môn học này đều được trả lời hay chỉ giảng viên dạy lớp này sẽ giải đáp riêng cho câu hỏi lớp đó.', NULL),
+(2, 15, 'HE171073', N'Đề thi PE PRN', '2023-06-29', 0, N'Em muốn xin thầy đề thi thử qua các kì ạ.', NULL),
+(3, 15, 'HE171073', N'Chức năng AskMentor của FAP', '2023-06-30', 1, N'Thầy ơi, thầy có thể giúp em giải thích thêm một câu hỏi là với 1 question mà student gửi cho giảng viên lớp mình thì 1 câu hỏi sẽ chỉ có 1 answer rồi nếu muốn chỉnh sửa answer đó thì giảng viên phải update answer hay 1 câu hỏi giảng viên có thể trả lời nhiều lần khác nhau ạ?', NULL),
+(4, 15, 'HE171073', N'Deadline project', '2023-07-01', 0, N'Slot19 thầy sẽ chấm project đúng không ạ?', NULL),
+(5, 15, 'HE170863', N'Mô hình MVC', '2023-07-01', 1, N'Thầy giúp em giải thích mô hình MVC trong ASP.NET với ạ.', NULL),
+(6, 15, 'HE170863', N'EarlyBinding', '2023-07-01', 0, N'Early Binding là gì vậy thầy?', NULL),
+(7, 15, 'HE170907', N'Timetable', '2023-06-29', 1, N'Ngày mai có thầy có đổi lịch học không ạ?', NULL),
+(8, 15, 'HE170907', N'Middleware trong C#', '2023-07-02', 1, N'Giải thích về concept middleware trong ASP.NET giúp em với thầy!', NULL),
+(9, 15, 'HE170996', N'Tool trong Project', '2023-07-02', 0, N'Em dùng React code project có được không ạ?', NULL),
+(10, 15, 'HE170996', N'Bài tập hè', '2023-07-02', 0, N'Bài tập trên CMS thầy chưa up ạ.', NULL),
+(11, 4, 'HE151390', N'Quizlet SWE', '2023-06-28', 0, N'Which of the software development models can best respond to requirements changes?', NULL),
+(12, 4, 'HE161152', N'Quizlet SWE', '2023-06-28', 0, N'Which of the following are limitations of the waterfall model? Select three. A. Integration issues may remain undetected until the last phase. B. Misinterpretations of requirements or design can remain undetected until the later development phases. C. It is not suitable for big projects. D. It is difficult to respond to requirements changes.', NULL),
+(13, 4, 'HE161165', N'Không join được Coursera', '2023-06-28', 1, N'Tài khoản của em không đang nhập vào coursera được ạ', NULL),
+(14, 4, 'HE161181', N'Thi PE', '2023-06-28', 1, N'Môn này có thi thực hành không ạ?', NULL),
+(15, 4, 'HE163891', N'Đạo văn trên Coursera', '2023-06-28', 0, N'Em bị gán coursera gán cờ rồi, làm sao để giải quyết vậy thầy?', NULL),
+(16, 4, 'HE164019', N'Điểm danh', '2023-06-28', 0, N'Môn này nghỉ vượt quá số buổi có được đi thi không ạ?', NULL),
+(17, 4, 'HE170012', N'Quizlet SWE201c', '2023-06-28', 0, N'Why is requirement specification important?', NULL),
+(18, 4, 'HE170027', N'Quizlet', '2023-06-28', 0, N'WRSPM stands for ?', NULL),
+(19, 10, 'HE153487', N'Chapter 1', '2023-06-30', 0, N'What is Fog computing?', NULL),
+(20, 10, 'HE160021', N'Chapter 2', '2023-07-01', 0, N'What is an example of cloud computing?', NULL),
+(21, 10, 'HE160120', N'Chapter 3', '2023-07-01', 0, N'What is used to uniquely identify devices connected to the Internet? A. gateway address B. IP address C. device name D. URL', NULL),
+(22, 10, 'HE160277', N'Chapter 4', '2023-07-01', 0, N'Which of the following is one of the ways IoT monitoring of dairy cows improves dairy farming?'
++ CHAR(13) + CHAR(10) +
+'A. The system tells you when cows are ready for milking, saving time spent on monitoring the herd.' 
++ CHAR(13) + CHAR(10) +
+'B. The system can sound alarms when cows roam into neighboring paddocks.' 
++ CHAR(13) + CHAR(10) +
+'C. The system notices the cows that are unwell, so they are treated quicker, which speeds up recovery time.' 
++ CHAR(13) + CHAR(10) +
+'D. The system results in more milk from the cows'' udders for each milking.', NULL),
+(23, 10, 'HE160533', N'Chapter 5', '2023-06-29', 0, N'What are the descriptors for Big Data? (as coined by IBM)', NULL),
+(24, 8, 'HE150271', N'Assignment 1', '2023-06-20', 1, N'Thứ mấy kiểm tra ạ?', NULL),
+(25, 8, 'HE150862', N'Assignment 2', '2023-07-02', 1, N'Assignment về những nội dung gì vậy thầy ?', NULL),
+(26, 8, 'HE150271', N'Assignment 1', '2023-06-20', 0, N'Thi EOS hay CMS thế ạ?', NULL),
+(27, 13, 'HE171073', N'Chapter 4', '2023-06-30', 0, N'49, 34, and 48 students are selected from the Sophomore, Junior, and Senior classes with 496, 348, and 481 students respectively. Identify which of these types of sampling is used: Stratified, systematic, cluster, random.', NULL),
+(28, 13, 'HE171073', N'Chapter 5', '2023-07-01', 1, N'A bag of colored candies contains 20 red, 25 yellow, and 35 orange candies. An experiment consists of randomly choosing one candy from the bag and recording its color. What is the sample space for this experiment?', NULL),
+(29, 13, 'HE170863', N'Progress test 1', '2023-07-02', 0, N'A bank''s loan officer rates applicants for credit. The ratings are normally distributed with a mean of 200 and a standard deviation of 50. If an applicant is randomly selected, find the probability of a rating that is between 200 and 275.', NULL),
+(30, 13, 'HE170907', N'Progress test 2', '2023-06-28', 0, N'A basketball player has made 70% of his foul shots during the season. If he shoots 3 foul shots in tonight''s game, what is the probability that he makes all of the shots?', NULL);
+SET IDENTITY_INSERT Question OFF;
+
+SET DATEFORMAT dmy;
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('1', '28/06/2023', N'Chỉ giảng viên lớp mình nhé');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('3', '30/06/2023', N'Tùy em nhé, sao cho hợp lý là được');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('5', '03/07/2023', N' Mô hình MVC (Model-View-Controller) trong ASP.NET là một mô hình kiến trúc phần mềm giúp tách biệt dữ liệu (Model), giao diện người dùng (View), và luồng điều khiển (Controller) của ứng dụng web. Model đại diện cho dữ liệu và quy tắc logic liên quan đến nó, View là giao diện người dùng hiển thị thông tin, còn Controller điều khiển sự tương tác của người dùng và điều hướng dữ liệu giữa Model và View. Mô hình này giúp dễ dàng phát triển và bảo trì ứng dụng web.');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('7', '29/06/2023', N'Không nhé em ! Lớp vẫn học bình thường');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('7', '30/06/2023', N'Em check lại lịch học trên FAP, đã có sự thay đổi nhé');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('8', '04/07/2023', N'Trong ASP.NET, middleware là một khái niệm quan trọng của kiến trúc hướng trung tâm (centralized architecture). Middleware là các thành phần phần mềm được thực thi trước khi yêu cầu (request) từ người dùng đến đích (target) được xử lý. Middleware có thể thực hiện các chức năng như xác thực (authentication), kiểm soát quyền truy cập (authorization), ghi log (logging), nén dữ liệu, và nhiều chức năng xử lý khác. Các middleware có thể xếp chồng lên nhau để thực hiện nhiều chức năng một cách tuần tự. Nó giúp tách biệt logic xử lý ứng dụng và tái sử dụng chúng cho nhiều ứng dụng khác nhau.');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('13', '03/07/2023', N'Em liên hệ với phòng dịch vụ sinh viên để được support cụ thể nhé');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('14', '30/06/2023', N'Có thi PE, trước khi thi 1 tuần thầy sẽ gửi đề thi thử');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('24', '22/06/2023', N'Thứ 6 tuần này, slot 16 nhé');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('25', '02/07/2023', N'Tất cả kiến thức thầy đã dạy :v');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('28', '05/07/2023', N'The sample space is the set of all possible outcomes of an experiment. In this case, the experiment is randomly choosing one candy from the bag. So, the sample space consists of all the possible colors of candies that can be chosen: {Red, Yellow, Orange}.');

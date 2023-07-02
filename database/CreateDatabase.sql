@@ -140,6 +140,7 @@ CREATE TABLE Question
 	questionId int NOT NULL IDENTITY(1,1), 
 	questionTitle nvarchar(50), 
 	questionDescription nvarchar(max),
+	questionSentTime datetime,
 	fileURL varchar(max),
 	studentId varchar(8),
 	groupId int, 
@@ -156,9 +157,9 @@ REFERENCES [Group] (groupId)
 CREATE TABLE Answer
 (
 	answerId int NOT NULL IDENTITY(1,1), 
-	answerContent nvarchar(max),
-	answerTime datetime,
 	questionId int, 
+	answerTime datetime,
+	answerContent nvarchar(max),
 	CONSTRAINT PK_Answer PRIMARY KEY (answerId)
 )
 ALTER TABLE Answer ADD CONSTRAINT FK_Answer_Question FOREIGN KEY(questionId)
@@ -173,12 +174,12 @@ REFERENCES Question (questionId)
 /*
 SELECT * FROM Student
 SELECT * FROM Participate
-SELECT * FROM []
+SELECT * FROM 
 SELECT * FROM [Group]
-SELECT * FROM 
+SELECT * FROM [Status]
 SELECT * FROM Instructor
-SELECT * FROM 
-SELECT * FROM 
+SELECT * FROM Question 
+SELECT * FROM Answer
 SELECT * FROM Course
 
 SELECT * FROM AccountRole
@@ -188,6 +189,9 @@ SELECT * FROM [Role]
 SELECT * FROM Feature
 
 --	Thứ tự xóa bảng 
+DELETE FROM Answer
+DELETE FROM Question
+DELETE FROM [Status]
 DELETE FROM Participate
 DELETE FROM [Group]
 DELETE FROM Student
