@@ -1,7 +1,7 @@
 ﻿USE AP
-DROP DATABASE PRN211_FeedbackAndQASystem
-CREATE DATABASE PRN211_FeedbackAndQASystem
-USE PRN211_FeedbackAndQASystem 
+DROP DATABASE PRN211_FeedbackAndQASystem;
+CREATE DATABASE PRN211_FeedbackAndQASystem;
+USE PRN211_FeedbackAndQASystem; 
 
 CREATE TABLE Account (
     username VARCHAR(150) NOT NULL PRIMARY KEY,
@@ -160,6 +160,7 @@ CREATE TABLE Answer
 	questionId int, 
 	answerTime datetime,
 	answerContent nvarchar(max),
+	fileURL varchar(max),
 	CONSTRAINT PK_Answer PRIMARY KEY (answerId)
 )
 ALTER TABLE Answer ADD CONSTRAINT FK_Answer_Question FOREIGN KEY(questionId)

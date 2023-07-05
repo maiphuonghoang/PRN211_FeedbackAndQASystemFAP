@@ -56,7 +56,7 @@ INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (2,'SE17
 INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (9,'SE1630-JS', 'SWP391', 'sonnt5');
 INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (4,'SE1735', 'SWE201c', 'tientd17');
 INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (5,'SE1758', 'OSG202', 'thangnv75');
-INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (6,'SE1805', 'PRF192', 'sonnt5');
+INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (6,'SE1714-NET', 'PRN211', 'tientd17');
 INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (7,'SE1729', 'PRJ301', 'sonnt5');
 INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (8,'SE1638-NET', 'PRN221', 'tientd17');
 INSERT INTO [Group] (groupId, groupName, courseId, instructorId) VALUES (3,'SE1826', 'SSG104', 'tientd17');
@@ -569,12 +569,16 @@ VALUES
 (27, 13, 'HE171073', N'Chapter 4', '2023-06-30', 0, N'49, 34, and 48 students are selected from the Sophomore, Junior, and Senior classes with 496, 348, and 481 students respectively. Identify which of these types of sampling is used: Stratified, systematic, cluster, random.', NULL),
 (28, 13, 'HE171073', N'Chapter 5', '2023-07-01', 1, N'A bag of colored candies contains 20 red, 25 yellow, and 35 orange candies. An experiment consists of randomly choosing one candy from the bag and recording its color. What is the sample space for this experiment?', NULL),
 (29, 13, 'HE170863', N'Progress test 1', '2023-07-02', 0, N'A bank''s loan officer rates applicants for credit. The ratings are normally distributed with a mean of 200 and a standard deviation of 50. If an applicant is randomly selected, find the probability of a rating that is between 200 and 275.', NULL),
-(30, 13, 'HE170907', N'Progress test 2', '2023-06-28', 0, N'A basketball player has made 70% of his foul shots during the season. If he shoots 3 foul shots in tonight''s game, what is the probability that he makes all of the shots?', NULL);
+(30, 13, 'HE170907', N'Progress test 2', '2023-06-28', 0, N'A basketball player has made 70% of his foul shots during the season. If he shoots 3 foul shots in tonight''s game, what is the probability that he makes all of the shots?', NULL),
+(31, 6, 'HE150732', N'Miễn điểm danh', '2023-05-07', 1,	N'Thầy ơi, em xin phép được miễn điểm danh môn PRN211 ạ.', NULL), 		
+(32, 6,'HE150998', N'Generic', '2023-06-29', 0,	N'Thầy cho em ví dụ về Generic của C# được không ạ?', NULL), 	
+(33, 6,'HE161224', N'Singleton','2023-06-30', 0, N'Làm sao để dùng Singleton design pattern cho DBContext  thế thầy?', NULL);	
 SET IDENTITY_INSERT Question OFF;
 
 SET DATEFORMAT dmy;
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('1', '28/06/2023', N'Chỉ giảng viên lớp mình nhé');
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('3', '30/06/2023', N'Tùy em nhé, sao cho hợp lý là được');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('3', '01/07/2023', N'Nhớ hạn chấm project vào slot 19');
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('5', '03/07/2023', N' Mô hình MVC (Model-View-Controller) trong ASP.NET là một mô hình kiến trúc phần mềm giúp tách biệt dữ liệu (Model), giao diện người dùng (View), và luồng điều khiển (Controller) của ứng dụng web. Model đại diện cho dữ liệu và quy tắc logic liên quan đến nó, View là giao diện người dùng hiển thị thông tin, còn Controller điều khiển sự tương tác của người dùng và điều hướng dữ liệu giữa Model và View. Mô hình này giúp dễ dàng phát triển và bảo trì ứng dụng web.');
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('7', '29/06/2023', N'Không nhé em ! Lớp vẫn học bình thường');
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('7', '30/06/2023', N'Em check lại lịch học trên FAP, đã có sự thay đổi nhé');
@@ -584,3 +588,4 @@ INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('14', '30/06/
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('24', '22/06/2023', N'Thứ 6 tuần này, slot 16 nhé');
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('25', '02/07/2023', N'Tất cả kiến thức thầy đã dạy :v');
 INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('28', '05/07/2023', N'The sample space is the set of all possible outcomes of an experiment. In this case, the experiment is randomly choosing one candy from the bag. So, the sample space consists of all the possible colors of candies that can be chosen: {Red, Yellow, Orange}.');
+INSERT INTO Answer (questionId, answerTime, answerContent) VALUES ('31', '06/07/2023', N'OK em!');

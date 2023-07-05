@@ -1,4 +1,4 @@
-﻿USE PRN211_FeedbackAndQASystem
+﻿USE PRN211_FeedbackAndQASystem;
 
 INSERT INTO Account(username, password) VALUES ('SE04495@fpt.edu.vn', '123')
 INSERT INTO Account(username, password) VALUES ('SE03520@fpt.edu.vn', '123')
