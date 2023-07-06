@@ -96,7 +96,6 @@ CREATE TABLE FbQuestion
 	fbQuestionId int NOT NULL,
 	fbQuestionTitle nvarchar(100),
 	fbQuestionContent nvarchar(100),
-	feedbackId int,
 	CONSTRAINT PK_FbQuestion PRIMARY KEY (fbQuestionId)
 )
 
@@ -104,7 +103,7 @@ CREATE TABLE Contain
 (
 	feedbackId int, 
 	fbQuestionId int ,
-	CONSTRAINT PK_FbQuestion PRIMARY KEY (feedbackId, fbQuestionId)
+	CONSTRAINT PK_Contain PRIMARY KEY (feedbackId, fbQuestionId)
 )
 ALTER TABLE Contain ADD CONSTRAINT FK_Contain_Feedback FOREIGN KEY(feedbackId)
 REFERENCES Feedback(feedbackId)
@@ -219,6 +218,13 @@ SELECT * FROM [Role]
 SELECT * FROM Feature
 
 --	Thứ tự xóa bảng 
+DELETE FROM Response
+DELETE FROM Do
+DELETE FROM Contain 
+DELETE FROM FbOption 
+DELETE FROM FbQuestion
+DELETE FROM Feedback
+
 DELETE FROM Answer
 DELETE FROM Question
 DELETE FROM [Status]

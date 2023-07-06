@@ -18,7 +18,8 @@ SELECT * FROM Answer
 SELECT * FROM Student s
 	JOIN Participate p ON s.studentId = p.studentId
 	JOIN [Group] g ON g.groupId = p.groupId
-	WHERE g.groupId = 6  
+	ORDER BY g.groupId
+	WHERE g.groupId = 4  
 
 -- Lấy các group của instructor dạy 
 SELECT * FROM [Group] g 
