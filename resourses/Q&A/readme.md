@@ -1,3 +1,4 @@
+# Student
 ### Create Question - Process
 ![CREATE-B1!](CreateQuestionProcessed.png)
 
@@ -10,11 +11,21 @@
 ### Create Question - Successfully 
 ![CREATE-B3!](CreateQuestionSuccess.png)
 
-### View Question - Answer is rocessing 
+### View Question - Answer is processing 
 ![VIEW-B1!](ViewQuestionAnswerProcessing.png)
 
 ### View Question - Answer is processed
 ![VIEW-B2!](ViewQuestionAnswerProcessed.png)
 
+# Lecturer
+### Answer Question Process
+![ANSWER-B1!](AnswerQuestionProcess.png)
 
+### List All Question 
+![LIST-B1!](listAllQuestionsTeacher.png)
 
+### List Answered Question 
+![LIST-B2!](listAnsweredQuestionTeacher.png)
+
+### List Not Answered Question 
+![LIST-B2!](listNotAnsweringQuestionTeacher.png)
