@@ -50,6 +50,12 @@ SELECT q.*, a.*, g.courseId FROM Question q
 	WHERE -- g.courseId = 'PRN211' AND 
 	s.studentId = 'HE171073'
 
+-- Lấy các instructor theo group đang học của 1 student 
+SELECT * FROM Student s
+	JOIN Participate p ON s.studentId = p.studentId
+	JOIN [Group] g ON g.groupId = p.groupId
+	JOIN Instructor i ON i.instructorId = g.instructorId
+	WHERE s.studentId = 'HE171073'
 
 
 

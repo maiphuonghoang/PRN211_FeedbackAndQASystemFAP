@@ -91,26 +91,65 @@ CREATE TABLE Feedback
 ALTER TABLE Feedback ADD CONSTRAINT FK_Feedback_Group FOREIGN KEY(groupId)
 REFERENCES [Group] (groupId)
 
-
 CREATE TABLE FbQuestion
 (
-	fbQuestionId int NOT NULL IDENTITY(1,1),
-	fbQuestionTitle nvarchar(max),
+	fbQuestionId int NOT NULL,
+	fbQuestionTitle nvarchar(100),
+	fbQuestionContent nvarchar(100),
 	feedbackId int,
 	CONSTRAINT PK_FbQuestion PRIMARY KEY (fbQuestionId)
 )
-ALTER TABLE FbQuestion ADD CONSTRAINT FK_FbQuestion_Feedback FOREIGN KEY(feedbackId)
-REFERENCES Feedback(feedbackId)
 
-CREATE TABLE FbQuestionCheck  
+CREATE TABLE Contain
 (
-	fbQuestionCheckId int NOT NULL IDENTITY(1,1),
-	fbQuestionCheckContent nvarchar(max),
-	fbQuestionId int,
-	CONSTRAINT PK_FbQuestionCheck PRIMARY KEY (fbQuestionCheckId)
+	feedbackId int, 
+	fbQuestionId int ,
+	CONSTRAINT PK_FbQuestion PRIMARY KEY (feedbackId, fbQuestionId)
 )
-ALTER TABLE FbQuestionCheck ADD CONSTRAINT FK_FbQuestionCheck_FbQuestion FOREIGN KEY(fbQuestionId)
+ALTER TABLE Contain ADD CONSTRAINT FK_Contain_Feedback FOREIGN KEY(feedbackId)
+REFERENCES Feedback(feedbackId)
+ALTER TABLE Contain ADD CONSTRAINT FK_Contain_FbQuestion FOREIGN KEY(fbQuestionId)
 REFERENCES FbQuestion(fbQuestionId)
+
+CREATE TABLE FbOption  
+(
+	fbOptionId int NOT NULL,
+	fbOptionContent nvarchar(max),
+	fbOptionGPA int, 
+	fbQuestionId int,
+	CONSTRAINT PK_FbOption PRIMARY KEY (fbOptionId)
+)
+ALTER TABLE FbOption ADD CONSTRAINT FK_fbOption_FbQuestion FOREIGN KEY(fbQuestionId)
+REFERENCES FbQuestion(fbQuestionId)
+
+CREATE TABLE Do (
+	doId int NOT NULL IDENTITY(1,1),
+	doStatus bit,
+	feedbackId int,
+	studentId varchar(8),
+	doTime datetime,
+	doComment nvarchar(max),
+	CONSTRAINT PK_Do PRIMARY KEY (doId)
+)
+ALTER TABLE Do ADD CONSTRAINT FK_Do_Feedback FOREIGN KEY(feedbackId)
+REFERENCES Feedback(feedbackId)
+ALTER TABLE Do ADD CONSTRAINT FK_Do_Student FOREIGN KEY(studentId)
+REFERENCES Student (studentId)
+
+CREATE TABLE Response 
+(
+	responseId int NOT NULL IDENTITY(1,1),
+	doId int, 
+	fbQuestionId int, 
+	selectedOptionId int, 
+	CONSTRAINT PK_Response PRIMARY KEY (responseId)
+)
+ALTER TABLE Response ADD CONSTRAINT FK_Response_Do FOREIGN KEY(doId)
+REFERENCES Do (doId)
+ALTER TABLE Response ADD CONSTRAINT FK_Response_FbQuestion FOREIGN KEY(fbQuestionId)
+REFERENCES FbQuestion (fbQuestionId)
+ALTER TABLE Response ADD CONSTRAINT FK_Response_FbOption FOREIGN KEY(selectedOptionId)
+REFERENCES FbOption (fbOptionId)
 
 CREATE TABLE [Status]
 (
@@ -118,22 +157,6 @@ CREATE TABLE [Status]
 	statusName varchar(50), 
 	CONSTRAINT PK_Status PRIMARY KEY (statusId)
 )
-
-CREATE TABLE Respond 
-(
-	respondTime datetime,
-	respondStatus int, 
-	feedbackId int,
-	studentId varchar(8),
-	CONSTRAINT PK_Respond PRIMARY KEY (studentId, feedbackId)
-)
-ALTER TABLE Respond ADD CONSTRAINT FK_Respond_Feedback FOREIGN KEY(feedbackId)
-REFERENCES Feedback(feedbackId)
-ALTER TABLE Respond ADD CONSTRAINT FK_Respond_Student FOREIGN KEY(studentId)
-REFERENCES Student (studentId)
-ALTER TABLE Respond ADD CONSTRAINT FK_Respond_Status FOREIGN KEY(respondStatus)
-REFERENCES [Status] (statusId)
-
 
 CREATE TABLE Question
 (
@@ -175,13 +198,19 @@ REFERENCES Question (questionId)
 /*
 SELECT * FROM Student
 SELECT * FROM Participate
-SELECT * FROM 
 SELECT * FROM [Group]
 SELECT * FROM [Status]
 SELECT * FROM Instructor
 SELECT * FROM Question 
 SELECT * FROM Answer
 SELECT * FROM Course
+
+SELECT * FROM Feedback 
+SELECT * FROM Contain
+SELECT * FROM FbQuestion
+SELECT * FROM FbOption
+SELECT * FROM Do
+SELECT * FROM Response 
 
 SELECT * FROM AccountRole
 SELECT * FROM Account
@@ -205,9 +234,3 @@ DELETE FROM Account
 DELETE FROM [Role]
 DELETE FROM Feature
 */
-
-
-
-
-
-
