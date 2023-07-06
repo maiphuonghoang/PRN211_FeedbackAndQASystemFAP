@@ -973,24 +973,45 @@ AS
 BEGIN
     DECLARE @doId INT = 1
     DECLARE @fbQuestionId INT = 1
-    DECLARE @selectedOptionId INT = 1
+    DECLARE @selectedOptionId INT
     
     WHILE @doId <= 437
     BEGIN
         WHILE @fbQuestionId <= 5
         BEGIN
-            DECLARE @selectedOptionStartId INT = (@fbQuestionId - 1) * 4 + 1
-            DECLARE @selectedOptionEndId INT = @fbQuestionId * 4
+            DECLARE @selectedOptionStartId INT
+            DECLARE @selectedOptionEndId INT
             
-            SET @selectedOptionId = @selectedOptionStartId
-            
-            WHILE @selectedOptionId <= @selectedOptionEndId
+            IF @fbQuestionId = 1
             BEGIN
-                INSERT INTO Response (doId, fbQuestionId, selectedOptionId)
-                VALUES (@doId, @fbQuestionId, @selectedOptionId)
-                
-                SET @selectedOptionId = @selectedOptionId + 1
+                SET @selectedOptionStartId = 1
+                SET @selectedOptionEndId = 4
             END
+            ELSE IF @fbQuestionId = 2
+            BEGIN
+                SET @selectedOptionStartId = 5
+                SET @selectedOptionEndId = 8
+            END
+            ELSE IF @fbQuestionId = 3
+            BEGIN
+                SET @selectedOptionStartId = 9
+                SET @selectedOptionEndId = 12
+            END
+            ELSE IF @fbQuestionId = 4
+            BEGIN
+                SET @selectedOptionStartId = 13
+                SET @selectedOptionEndId = 16
+            END
+            ELSE IF @fbQuestionId = 5
+            BEGIN
+                SET @selectedOptionStartId = 17
+                SET @selectedOptionEndId = 20
+            END
+            
+            SET @selectedOptionId = ROUND((RAND() * (@selectedOptionEndId - @selectedOptionStartId)) + @selectedOptionStartId, 0)
+            
+            INSERT INTO Response (doId, fbQuestionId, selectedOptionId)
+            VALUES (@doId, @fbQuestionId, @selectedOptionId)
             
             SET @fbQuestionId = @fbQuestionId + 1
         END
