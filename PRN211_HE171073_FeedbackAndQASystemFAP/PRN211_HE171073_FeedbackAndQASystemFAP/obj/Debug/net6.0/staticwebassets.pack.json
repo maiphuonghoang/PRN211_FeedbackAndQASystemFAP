@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\base.css",
+      "PackagePath": "staticwebassets\\css\\base.css"
+    },
+    {
+      "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\img\\FPT_logo_2010.svg.png",
+      "PackagePath": "staticwebassets\\img\\FPT_logo_2010.svg.png"
+    },
+    {
+      "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\img\\fpt3.png",
+      "PackagePath": "staticwebassets\\img\\fpt3.png"
+    },
+    {
+      "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\js\\returntop.js",
+      "PackagePath": "staticwebassets\\js\\returntop.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.PRN211_HE171073_FeedbackAndQASystemFAP.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.PRN211_HE171073_FeedbackAndQASystemFAP.props",
+      "PackagePath": "build\\PRN211_HE171073_FeedbackAndQASystemFAP.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.PRN211_HE171073_FeedbackAndQASystemFAP.props",
+      "PackagePath": "buildMultiTargeting\\PRN211_HE171073_FeedbackAndQASystemFAP.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.PRN211_HE171073_FeedbackAndQASystemFAP.props",
+      "PackagePath": "buildTransitive\\PRN211_HE171073_FeedbackAndQASystemFAP.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

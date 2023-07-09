@@ -1,11 +1,105 @@
 {
   "Version": 1,
-  "Hash": "5FgU3ml4kQCGs3E3GqDekccJxyu8KKlFdAT/gjPkBYw=",
+  "Hash": "YX3rrepTVUAy+BPxuzAwedv05+DUxPFUOnzxQ3xU+7U=",
   "Source": "PRN211_HE171073_FeedbackAndQASystemFAP",
   "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot",
+      "Source": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\base.css",
+      "SourceId": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "RelativePath": "css/base.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\base.css"
+    },
+    {
+      "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\login.css",
+      "SourceId": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
+    },
+    {
+      "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\img\\FPT_logo_2010.svg.png",
+      "SourceId": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "RelativePath": "img/FPT_logo_2010.svg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\FPT_logo_2010.svg.png"
+    },
+    {
+      "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\img\\fpt3.png",
+      "SourceId": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "RelativePath": "img/fpt3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\fpt3.png"
+    },
+    {
+      "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\js\\returntop.js",
+      "SourceId": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "RelativePath": "js/returntop.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\returntop.js"
+    }
+  ]
 }

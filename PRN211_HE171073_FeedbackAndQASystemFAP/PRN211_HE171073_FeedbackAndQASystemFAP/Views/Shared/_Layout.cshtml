@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>@ViewBag.Title</title>
+    <link href="/css/base.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/a54d2cbf95.js"></script>
+    @RenderSection("CSS", required:false)
+</head>
+<body>
+
+    <div class="app">
+        <header class="header">
+            <div class="grid wide">
+                <div class="logo">
+                    <img class="logo-img" src="/img/FPT_logo_2010.svg.png" alt="alt" />
+                    <h1 style="display: inline-block; margin-left: 4px; font-weight: 300">University Academic Portal</h1>
+                </div>
+
+                <div class="header__navbar">
+
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <a class="header__link panel" href="timetable">Question</a>
+                        </li>
+                        <li class="header__item">
+                            <a class="header__link panel" href="reportattend">Feedback</a>
+                        </li>
+
+                    </ul>
+                    <div>
+                        <a href="" class="label label-hover">@User.Identity.Name</a>&nbsp|
+                        <a asp-controller="Accounts" asp-action="Logout" class="label label-danger">Logout</a>&nbsp|
+                        <span class="label label-hover">CAMPUS: FPTU-Hòa Lạc</span>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <div class="app__container">
+            <div class="grid wide">
+
+                @RenderBody();
+            </div>
+        </div>
+    </div>
+    <a href="#" class="to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script src="/js/returntop.js"></script>
+    @RenderSection("JS", required:false)
+</body>
+</html>

@@ -1,6 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@if (User.Identity.IsAuthenticated && User.IsInRole("Student"))
+{
+    <a href="/">Ask mentor</a> <br/>
+    <a href="/">View question</a>
 }
-<p>Home 123</p>
+else if (User.Identity.IsAuthenticated && User.IsInRole("Teacher"))
+{
+    <a href="/">View feedback</a>
+    <br />
+    <a href="/">Student questions</a>
+}
+

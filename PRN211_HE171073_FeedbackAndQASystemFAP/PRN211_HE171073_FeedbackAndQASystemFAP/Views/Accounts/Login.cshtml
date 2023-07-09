@@ -1,0 +1,50 @@
+﻿@model Account
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP Page</title>
+    <link href="/css/login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="wrapper">
+        <img src="~/img/fpt3.png" />
+    </div>
+
+    <div class="main">
+
+        <form class="form" asp-controller="Accounts" asp-action="Login">
+            <h2 class="heading">
+                Login FAP</h3>
+
+                <div class="spacer"></div>
+
+                <div class="form-group">
+                    <label asp-for="Username" class="form-label" placeholder="abc@fpt.edu.vn">Username:</label>
+                    <input asp-for="Username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label">Password:</label>
+                    <input asp-for="Password" class="form-control">
+                </div>
+                <h3 style="color: red"></h3>
+
+                <h3>Remember your account <input type="checkbox" name="remember" value="true" /></h3><br>
+
+                <span class="text-danger">@((string)ViewBag.Msg)</span><br />
+                <input class="form-submit" type="submit" value="Login" />
+        </form>
+
+
+    </div>
+
+</body>
+</html>
+
