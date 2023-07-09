@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PRN211_FeedbackAndQASystemContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn") ?? throw new InvalidOperationException("Connection string 'ElectroTemplateContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn") ?? throw new InvalidOperationException("Connection string 'PRN211_FeedbackAndQASystemContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -32,6 +32,10 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "question",
+    pattern: "{controller=Questions}/{action=LecturerQA}/{Id=0}/{Page=1}");
 
 app.MapControllerRoute(
     name: "default",

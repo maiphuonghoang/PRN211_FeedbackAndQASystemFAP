@@ -1,0 +1,111 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@addTagHelper *, PRN211_HE171073_FeedbackAndQASystemFAP
+@*add tất cả tag helper trong thư viện demo paging*@
+@model List<Question>
+@{
+    int index = 1;
+}
+
+<li><a href="/Questions/LecturerQA">All Group</a></li>
+@foreach (Group g in ViewBag.Groups)
+{
+    <li><a href="/Questions/LecturerQA/@g.GroupId">@g.GroupName</a></li>
+}
+
+<div>
+    <div>
+        @if (Model.Count() == 0)
+        {
+            <p>There is no questions in this group</p>
+        }
+        else
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Roll number</th>
+                        <th>Subject</th>
+                        <th style="width:150px;">Title</th>
+                        <th style="width:250px;">...</th>
+                        <th>SENT TIME</th>
+                        <th style="width:250px;">...</th>
+                        <th>Replied time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                @foreach (var q in Model)
+                {
+                    <tr>
+                        <td style="width: 20px;">@(index++)</td>
+                        <td><span class='label label-info'>@q.StudentId</span></td>
+                        <td><span class='label label-default'>@q.Group?.CourseId</span></td>
+                        <td><span class='label label-info'>@q.QuestionTitle</span></td>
+                        <td style="width:250px;">
+                            <div class="btn-group btn-group-xs">
+                                <a class="label label-danger " data-toggle="collapse" href="#d_9187">View Question</a>
+                            </div>
+                            <div class="collapse">
+                                <p>@q.QuestionDescription</p>
+                            </div>
+                        </td>
+                        <td>@q.QuestionSentTime</td>
+                        <td style="width:250px;">
+                            @if (q.QuestionStatus == 1)
+                            {
+                                @foreach (var answer in q.Answers)
+                                {
+                                    <div class="btn-group btn-group-xs">
+                                        <a class="label label-success " data-toggle="collapse">View Answer</a>
+                                    </div>
+                                    <div class="collapse">
+                                        <p>@answer.AnswerContent</p>
+                                    </div>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @if (q.QuestionStatus == 1)
+                            {
+                                @foreach (var answer in q.Answers)
+                                {
+                                    <p>@answer.AnswerTime</p>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @if (q.QuestionStatus == 0)
+                            {
+                                <span class='label label-warning'>Processing</span>
+                            }
+                            else if (q.QuestionStatus == 1)
+                            {
+                                <span class='label label-danger'>Processed</span>
+                            }
+                            else
+                            {
+                                <span class='label label-default'>Reject</span>
+                            }
+                        </td>
+                    </tr>
+                }
+
+
+            </table>
+
+
+        }
+    </div>
+
+    <pager total-page='@((int)ViewData["TotalPage"])'
+           current-page='@((int)ViewData["CurrentPage"])'
+           url="/Questions/LecturerQA/@ViewData["CurrentGroup"]"
+           active-class="active">
+    </pager>
+</div>

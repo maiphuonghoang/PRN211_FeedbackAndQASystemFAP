@@ -26,7 +26,9 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         [HttpPost]
         public IActionResult Login(string Username, string Password)
         {
-            var user = _context.Accounts.Include("Roles").Where(u => u.Username.Equals(Username) && u.Password.Equals(Password)).FirstOrDefault();
+            var user = _context.Accounts.Include("Roles")
+                .Where(u => u.Username.Equals(Username) && u.Password.Equals(Password))
+                .FirstOrDefault();
 
             if (user == null)
             {
@@ -35,10 +37,27 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             }
             var roleNames = user.Roles.Select(r => r.RoleName).ToList();
             string role = user.Roles.Any(r => r.RoleId == 2) ? "Instructor" : "Student";
+            string roll = string.Empty; // Declare roll variable outside of the if statement
+
+            if (role == "Student")
+            {
+                roll = _context.Students
+                    .Where(s => s.AccountId.Equals(user.Username))
+                    .Select(s => s.StudentId)
+                    .FirstOrDefault();
+            }
+            else if (role == "Instructor")
+            {
+                roll = _context.Instructors
+                    .Where(s => s.AccountId.Equals(user.Username))
+                    .Select(i => i.InstructorId)
+                    .FirstOrDefault();
+            }
             var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, user.Username),
             new Claim(ClaimTypes.Role, role),
+            new Claim(ClaimTypes.UserData, roll),
         };
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.SignInAsync(
