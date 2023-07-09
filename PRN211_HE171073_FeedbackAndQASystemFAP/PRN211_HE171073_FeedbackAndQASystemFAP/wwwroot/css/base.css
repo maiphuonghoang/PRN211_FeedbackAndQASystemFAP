@@ -114,6 +114,12 @@ th{
 .label-primary {
     background-color: #337ab7;
 }
+.label-info {
+    background-color: #5bc0de;
+}
+.label-default {
+    background-color: #777;
+}
 .label-danger {
     background-color: #d9534f;
 }

@@ -693,7 +693,7 @@ INSERT INTO Instructor (instructorId, instructorName, accountId, gender) VALUES 
 INSERT INTO Instructor (instructorId, instructorName, accountId, gender) VALUES ('anhnh88', N'Nguyễn Hoàng Anh','anhnh88@fpt.edu.vn', 0);
 
 INSERT INTO [Role](roleId, roleName) VALUES (1, 'Admin')
-INSERT INTO [Role](roleId, roleName) VALUES (2, 'Teacher')
+INSERT INTO [Role](roleId, roleName) VALUES (2, 'Instructor')
 INSERT INTO [Role](roleId, roleName) VALUES (3, 'Student')
 
 INSERT INTO AccountRole (username, roleId) VALUES ('SE03520@fpt.edu.vn',  3)

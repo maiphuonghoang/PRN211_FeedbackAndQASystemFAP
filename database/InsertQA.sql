@@ -527,6 +527,7 @@ INSERT INTO [Participate] ([studentId], [groupId]) VALUES ('HE163906', '10');
 
 INSERT INTO Status (statusId, statusName) VALUES(0, 'Processing');
 INSERT INTO Status (statusId, statusName) VALUES(1, 'Processed');
+INSERT INTO Status (statusId, statusName) VALUES(2, 'Rejected');
 
 SET DATEFORMAT ymd;
 SET IDENTITY_INSERT Question ON;

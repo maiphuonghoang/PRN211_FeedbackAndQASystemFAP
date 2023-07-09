@@ -3,10 +3,10 @@
     <a href="/">Ask mentor</a> <br/>
     <a href="/">View question</a>
 }
-else if (User.Identity.IsAuthenticated && User.IsInRole("Teacher"))
+else if (User.Identity.IsAuthenticated && User.IsInRole("Instructor"))
 {
     <a href="/">View feedback</a>
     <br />
-    <a href="/">Student questions</a>
+    <a asp-controller="Questions" asp-action="ViewQAS">Student questions</a>
 }
 

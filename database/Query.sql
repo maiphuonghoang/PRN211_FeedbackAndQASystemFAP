@@ -82,10 +82,7 @@ SELECT DISTINCT g.courseId, c.courseName, g.groupName, g.instructorId, f.feedbac
 	JOIN [Group] g ON f.groupId = g.groupId
 	JOIN Course c ON c.courseId = g.courseId
 	JOIN Participate p ON g.groupId = p.groupId
-	JOIN Student s ON s.studentId = p.studentId
-	JOIN Do d ON d.studentId = s.studentId AND d.feedbackId = f.feedbackId
 	WHERE g.instructorId = 'tientd17'
-	AND d.doStatus = 0
 
 -- GPA, comment của feedback của giảng viên 
 SELECT r.*, q.*, o.*,d.doId, d.doComment, s.studentId, f.*

@@ -34,7 +34,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                 return View();
             }
             var roleNames = user.Roles.Select(r => r.RoleName).ToList();
-            string role = user.Roles.Any(r => r.RoleId == 2) ? "Teacher" : "Student";
+            string role = user.Roles.Any(r => r.RoleId == 2) ? "Instructor" : "Student";
             var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, user.Username),
