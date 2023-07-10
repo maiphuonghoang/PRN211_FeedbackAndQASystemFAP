@@ -29,23 +29,25 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         }
         public IActionResult FeedbackGPA(int Id)
         {
-            var id = Id;
+            string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
+            Feedback f = _context.Feedbacks.FirstOrDefault(f => f.Group.InstructorId.Equals(roll) && f.FeedbackId == Id);
+            List<Response> results = new List<Response>();
+            if (f != null)
+            {
 
-            var results = _context.Responses
-                           .Include(r => r.Do)
-                               .Where(f => f.Do.FeedbackId == Id)
-                           .Include(r => r.FbQuestion)
-                               .ThenInclude(q => q.FbOptions)
-                           .ToList();
-            ViewBag.CurrentFeedback = _context.Feedbacks
-                .Include(f => f.Group)
-                                .FirstOrDefault(f => f.FeedbackId == Id);
-            ViewBag.Does = _context.Dos
-                         .Where(d => d.FeedbackId == Id)
-                         //.Select(d => d.DoId)
-                         .ToList();
-
-
+                results = _context.Responses
+                               .Include(r => r.Do)
+                                   .Where(f => f.Do.FeedbackId == Id && f.Do.DoStatus == true)
+                               .Include(r => r.FbQuestion)
+                                   .ThenInclude(q => q.FbOptions)
+                               .ToList();
+                ViewBag.CurrentFeedback = _context.Feedbacks
+                    .Include(f => f.Group)
+                                    .FirstOrDefault(f => f.FeedbackId == Id);
+                ViewBag.Does = _context.Dos
+                                .Where(d => d.FeedbackId == Id)
+                                .ToList();
+            }
             return View(results);
         }
     }

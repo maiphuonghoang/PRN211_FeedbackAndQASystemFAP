@@ -5,44 +5,61 @@
     int? sum = 0;
     decimal? totalGPA = 0;
 }
-<center>
-    <div>
-        View feedback for teacher @f.Group.InstructorId, open day @f.FeedbackOpenDay, close date @f.FeedbackCloseDay
-    </div>
-</center>
-<table width="100%" style="border: 1px solid transparent;">
-    <tr>
-        <th>Hit</th>
-        <th>Question 1</th>
-        <th>Question 2</th>
-        <th>Question 3</th>
-        <th>Question 4</th>
-        <th>Question 5</th>
-        <th>GPA</th>
-        <th>Comment</th>
-    </tr>
-
-    @foreach (Do d in ViewBag.Does)
+@if (Model.Count() > 0)
+{
+    <center>
+        <div>
+            View feedback for teacher @f.Group.InstructorId, open day @f.FeedbackOpenDay, close date @f.FeedbackCloseDay
+        </div>
+    </center>
+    @if (Model.Count() > 0)
     {
-        <tr>
-            <td>@(index++)</td>
-            @foreach (var item in Model)
+
+        <table width="100%" style="border: 1px solid transparent;">
+            <tr>
+                <th>Hit</th>
+                <th>Question 1</th>
+                <th>Question 2</th>
+                <th>Question 3</th>
+                <th>Question 4</th>
+                <th>Question 5</th>
+                <th style="width:200px;">GPA</th>
+                <th style="width:250px;">Comment</th>
+            </tr>
+
+            @foreach (Do d in ViewBag.Does)
             {
-                if (item.DoId == d.DoId)
-                {
-                    <td>@item.SelectedOption?.FbOptionGpa</td>
-                    sum += item.SelectedOption?.FbOptionGpa;
-                }
+                <tr>
+                    <td>@(index++)</td>
+                    @foreach (var item in Model)
+                    {
+                        if (item.DoId == d.DoId)
+                        {
+                            <td>@item.SelectedOption?.FbOptionGpa</td>
+                            sum += item.SelectedOption?.FbOptionGpa;
+                        }
+                    }
+                    <td>@((decimal)sum / 5)</td>
+                    <td>@d.DoComment</td>
+                </tr>
+                <span style="color: #fff;">@(totalGPA += (decimal)sum / 5)</span>
+                <span style="color: #fff;">@(sum = 0)</span>
+
             }
-            <td>@((decimal)sum / 5)</td>
-            <td>@d.DoComment</td>
-        </tr>
-        <span style="color: #fff;">@(totalGPA += (decimal)sum / 5)</span>
-        <span style="color: #fff;">@(sum = 0)</span>
+
+        </table>
+        <br />
+        <div style="position: fixed; bottom: 0; right: 25%; color: red; font-weight: bold;">
+            TOTAL GPA @(Math.Round(totalGPA.Value / index, 2))
+        </div>
+    }
+    else
+    {
+        <div style="margin-top:30px;">
+            <center>There is no student feedback right now</center>
+        </div>
 
     }
-
-</table>
-<br />
-<div>TOTAL GPA @(totalGPA/index)</div>
-</div>
+}else{
+    <p>You do not have this feedback</p>
+}
