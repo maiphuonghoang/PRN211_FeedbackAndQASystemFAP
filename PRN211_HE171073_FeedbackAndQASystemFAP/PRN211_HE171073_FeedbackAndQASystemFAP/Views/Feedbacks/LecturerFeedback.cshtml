@@ -1,0 +1,48 @@
+﻿@model List<Feedback>
+<h2>List of feedbacks</h2>
+<table class="table table-striped">
+    <thead>
+
+        <tr>
+            <th rowspan="2">Subject</th>
+            <th rowspan="2">Course detail</th>
+            <th rowspan="2">Group</th>
+            <th rowspan="2">Lecturer</th>
+            <th rowspan="2">Status</th>
+        </tr>
+
+    </thead>
+
+    @foreach (var f in Model)
+    {
+        <tr>
+            <td>@f.Group?.Course?.CourseId</td>
+            <td>@f.Group?.Course?.CourseName</td>
+            <td>@f.GroupId</td>
+            <td>@f.Group?.InstructorId</td>
+            <td>
+
+                @{
+                    DateTime today = DateTime.Now;
+                    if (f.FeedbackOpenDay < today && today < f.FeedbackCloseDay)
+                    {
+                        <span>Opening</span>
+                        
+                    }
+                    else if (today > f.FeedbackCloseDay)
+                    {
+                        <span>Closed</span>
+                    }
+                    else
+                    {
+                        <span>Future</span>
+                    }
+                }
+                <a href="">View</a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+
