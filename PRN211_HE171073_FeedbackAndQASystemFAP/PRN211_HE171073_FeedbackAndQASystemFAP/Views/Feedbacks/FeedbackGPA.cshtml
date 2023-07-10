@@ -1,1 +1,48 @@
-﻿
+﻿@model List<Response>
+@{
+    int index = 1;
+    Feedback f = ViewBag.CurrentFeedback;
+    int? sum = 0;
+    decimal? totalGPA = 0;
+}
+<center>
+    <div>
+        View feedback for teacher @f.Group.InstructorId, open day @f.FeedbackOpenDay, close date @f.FeedbackCloseDay
+    </div>
+</center>
+<table width="100%" style="border: 1px solid transparent;">
+    <tr>
+        <th>Hit</th>
+        <th>Question 1</th>
+        <th>Question 2</th>
+        <th>Question 3</th>
+        <th>Question 4</th>
+        <th>Question 5</th>
+        <th>GPA</th>
+        <th>Comment</th>
+    </tr>
+
+    @foreach (Do d in ViewBag.Does)
+    {
+        <tr>
+            <td>@(index++)</td>
+            @foreach (var item in Model)
+            {
+                if (item.DoId == d.DoId)
+                {
+                    <td>@item.SelectedOption?.FbOptionGpa</td>
+                    sum += item.SelectedOption?.FbOptionGpa;
+                }
+            }
+            <td>@((decimal)sum / 5)</td>
+            <td>@d.DoComment</td>
+        </tr>
+        <span style="color: #fff;">@(totalGPA += (decimal)sum / 5)</span>
+        <span style="color: #fff;">@(sum = 0)</span>
+
+    }
+
+</table>
+<br />
+<div>TOTAL GPA @(totalGPA/index)</div>
+</div>

@@ -84,7 +84,7 @@ SELECT DISTINCT g.courseId, c.courseName, g.groupName, g.instructorId, f.feedbac
 	JOIN Participate p ON g.groupId = p.groupId
 	WHERE g.instructorId = 'tientd17'
 
--- GPA, comment của feedback của giảng viên 
+-- GPA, comment của feedback của giảng viên theo group 
 SELECT r.*, q.*, o.*,d.doId, d.doComment, s.studentId, f.*
 	FROM Feedback f 
 	JOIN [Group] g ON f.groupId = g.groupId
@@ -95,6 +95,15 @@ SELECT r.*, q.*, o.*,d.doId, d.doComment, s.studentId, f.*
 	LEFT JOIN FbQuestion q ON q.fbQuestionId = r.fbQuestionId
 	LEFT JOIN FbOption o ON o.fbOptionId = r.selectedOptionId
 	WHERE g.groupId = 15 
+
+-- GPA, comment của feedback của giảng viên theo feedback 
+SELECT *
+	FROM Feedback f 
+	LEFT JOIN Do d ON d.feedbackId = f.feedbackId
+	LEFT JOIN Response r ON r.doId = d.doId
+	LEFT JOIN FbQuestion q ON q.fbQuestionId = r.fbQuestionId
+	LEFT JOIN FbOption o ON o.fbOptionId = r.selectedOptionId
+	WHERE f.feedbackId = 10
 	
 
 

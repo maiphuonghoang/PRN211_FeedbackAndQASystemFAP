@@ -18,7 +18,7 @@
         <tr>
             <td>@f.Group?.Course?.CourseId</td>
             <td>@f.Group?.Course?.CourseName</td>
-            <td>@f.GroupId</td>
+            <td>@f.Group?.GroupName</td>
             <td>@f.Group?.InstructorId</td>
             <td>
 
@@ -38,7 +38,7 @@
                         <span>Future</span>
                     }
                 }
-                <a href="">View</a>
+                <a href="/Feedbacks/FeedbackGPA/@f.FeedbackId">View</a>
             </td>
         </tr>
     }
