@@ -1,33 +1,31 @@
 ﻿@model List<FbQuestion>
-<style>
-    ol{
-        list-style: none;
-    }
-</style>
-
+<link href="/css/dofeedback.css" rel="stylesheet" type="text/css" />
 <form asp-controller="Feedbacks" asp-action="DoFeedback" method="post">
-    <ol>
-
-        @foreach (FbQuestion q in Model)
-        {
-            <li>
-                @q.FbQuestionTitle:
-                @q.FbQuestionContent
-                <input type="hidden" name="fbQuestionId" value="@q.FbQuestionId"/>
-                <ol>
-                    @foreach(var o in q.FbOptions)
-                    {
-                        <li>
-                            <ol>
-                            <input type="radio" name="fbOption_@q.FbQuestionId" value="@o.FbOptionId"/>
-                            @o.FbOptionContent
-                            </ol>
-                        </li>
-                    }
-                </ol>
-            </li>
-        }
-    </ol>
-    <input class="btn" type="submit" value="Send"/>
+    @foreach (FbQuestion q in Model)
+    {
+        <div class="home-layout">
+            <div class="container">
+                <div class="card">
+                    <h4 class="card-header font-weight-bold">
+                        @q.FbQuestionTitle: @q.FbQuestionContent
+                    </h4>
+                    <div class="card-body">
+                        <div class="container">
+                            @foreach (var o in q.FbOptions)
+                            {
+                                <label class="radio-label">
+                                    <div class="option-button">
+                                        <input type="radio" name="fbOption_@q.FbQuestionId" value="@o.FbOptionId" />
+                                        @o.FbOptionContent
+                                    </div>
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <center><input class="btn" type="submit" value="Send" /></center>
 
 </form>
