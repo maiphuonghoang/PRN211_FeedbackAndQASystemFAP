@@ -1,31 +1,31 @@
 ﻿
 USE PRN211_FeedbackAndQASystem
-INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('1', 'Question 1', N'Giảng viên có dạy đúng giờ ? ');
-INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('2', 'Question 2', N'Bài giảng có đúng tiến độ? ');
-INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('3', 'Question 3', N'Giảng viên hỗ trợ trả lời trong quá trình học? ');
-INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('4', 'Question 4', N'Chất lượng bài giảng? ');
-INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('5', 'Question 5', N'Giảng viên có nhiệt tình giảng dạy?');
+INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('1', 'Question 1', N'Giảng viên có dạy đúng giờ ? (Does the teacher teach on time?)');
+INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('2', 'Question 2', N'Bài giảng có đúng tiến độ? (Is the lecture on schedule?)');
+INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('3', 'Question 3', N'Giảng viên hỗ trợ trả lời trong quá trình học? (Does the teacher support during the learning process?)');
+INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('4', 'Question 4', N'Đánh giá chất lượng bài giảng? (Quality of lectures?)');
+INSERT INTO FbQuestion (fbQuestionId, fbQuestionTitle, fbQuestionContent ) VALUES ('5', 'Question 5', N'Giảng viên có nhiệt tình giảng dạy? (Are the teacher enthusiastic about teaching?)');
 
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('1', '4', '1', N'Luôn luôn đúng giờ  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('2', '3', '1', N'Hầu hết đúng giờ  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('3', '2', '1', N'Thường xuyên đúng giờ ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('4', '1', '1', N'Không đúng giờ ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('5', '4', '2', N'Đảm bảo hoàn toàn  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('6', '3', '2', N'Hầu hết đúng tiến bộ  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('7', '2', '2', N'Đảm bảo 50% ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('8', '1', '2', N'Không đúng tiến độ  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('9', '4', '3', N'Trả lời ngay trong giờ học  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('10', '3', '3', N'Trả lời sau giờ học  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('11', '2', '3', N'Thỉnh thoảng trả lời  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('12', '1', '3', N'Không trả lời  ');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('1', '4', '1', N'Luôn luôn đúng giờ (Always on time)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('2', '3', '1', N'Hầu hết đúng giờ (Mostly on time)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('3', '2', '1', N'Thường xuyên đúng giờ (Sometime on time)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('4', '1', '1', N'Không đúng giờ (Not on time)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('5', '4', '2', N'Đảm bảo hoàn toàn (Fully guaranteed) ');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('6', '3', '2', N'Hầu hết đúng tiến bộ (Mostly true progress)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('7', '2', '2', N'Đảm bảo 50% (50% guaranteed)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('8', '1', '2', N'Không đúng tiến độ (Not on schedule)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('9', '4', '3', N'Trả lời ngay trong giờ học (Answer right in class)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('10', '3', '3', N'Trả lời sau giờ học (Reply after school)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('11', '2', '3', N'Thỉnh thoảng trả lời (Sometime reply)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('12', '1', '3', N'Không trả lời (No answer)');
 INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('13', '4', '4', N'Very good ');
 INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('14', '3', '4', N'Good ');
 INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('15', '2', '4', N'Medium  ');
 INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('16', '1', '4', N'Bad ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('17', '4', '5', N'Rất nhiệt tình  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('18', '3', '5', N'Hầu hết nhiệt tình  ');
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('19', '2', '5', N'Thỉnh thoảng nhiệt tình  ');	
-INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('20', '1', '5', N'Không nhiệt tình  ');	
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('17', '4', '5', N'Rất nhiệt tình (Very enthusiastic)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('18', '3', '5', N'Hầu hết nhiệt tình (Mostly enthusiastic)');
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('19', '2', '5', N'Thỉnh thoảng nhiệt tình (Sometimes enthusiastic)');	
+INSERT INTO FbOption (fbOptionId, fbOptionGPA, fbQuestionId, FbOptionContent ) VALUES ('20', '1', '5', N'Không nhiệt tình (Not enthusiastic)');	
 
 SET IDENTITY_INSERT Feedback ON;
 SET DATEFORMAT dmy;

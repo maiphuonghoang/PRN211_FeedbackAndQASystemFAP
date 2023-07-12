@@ -1,8 +1,7 @@
-﻿USE AP
-DROP DATABASE PRN211_FeedbackAndQASystem;
-CREATE DATABASE PRN211_FeedbackAndQASystem;
+﻿-- DROP DATABASE PRN211_FeedbackAndQASystem;
+-- CREATE DATABASE PRN211_FeedbackAndQASystem;
 USE PRN211_FeedbackAndQASystem; 
-
+ 
 CREATE TABLE Account (
     username VARCHAR(150) NOT NULL PRIMARY KEY,
     [password] VARCHAR(150) NOT NULL,
@@ -95,7 +94,7 @@ CREATE TABLE FbQuestion
 (
 	fbQuestionId int NOT NULL,
 	fbQuestionTitle nvarchar(100),
-	fbQuestionContent nvarchar(100),
+	fbQuestionContent nvarchar(max),
 	CONSTRAINT PK_FbQuestion PRIMARY KEY (fbQuestionId)
 )
 

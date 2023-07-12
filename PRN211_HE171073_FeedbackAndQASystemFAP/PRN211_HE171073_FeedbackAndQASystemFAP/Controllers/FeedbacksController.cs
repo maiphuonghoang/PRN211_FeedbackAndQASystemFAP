@@ -68,9 +68,13 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             
             return View(feedbacks);
         }
-        public IActionResult DoFeedback()
+        public IActionResult DoFeedback(int Id)
         {
-            return View();
+            int id = Id;
+            List<FbQuestion> questions = _context.Feedbacks.Include(f => f.FbQuestions)
+                .ThenInclude (q=>q.FbOptions)
+                .FirstOrDefault(f => f.FeedbackId == Id).FbQuestions.ToList();
+            return View(questions);
         }
     }
 }
