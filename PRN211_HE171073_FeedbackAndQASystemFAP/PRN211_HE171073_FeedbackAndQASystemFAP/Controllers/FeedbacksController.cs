@@ -50,5 +50,27 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             }
             return View(results);
         }
+        public IActionResult StudentFeedback()
+        {
+            DateTime today = DateTime.Now;
+            string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
+            roll = roll;
+            var feedbackIds = _context.Dos
+            .Where(d => d.StudentId.Equals(roll))
+            .Select(d => d.FeedbackId);
+            List<Feedback> feedbacks = _context.Feedbacks
+            .Where(f => feedbackIds.Contains(f.FeedbackId) && f.FeedbackOpenDay <= today && today <= f.FeedbackCloseDay)
+            .Include(f=>f.Group)
+            .ToList();
+
+            ViewBag.doStatus = _context.Dos
+            .Where(d => feedbackIds.Contains(d.Feedback.FeedbackId)).ToList();
+            
+            return View(feedbacks);
+        }
+        public IActionResult DoFeedback()
+        {
+            return View();
+        }
     }
 }

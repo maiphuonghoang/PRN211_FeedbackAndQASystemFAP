@@ -75,7 +75,7 @@ SELECT g.groupName, f.feedbackOpenDay, i.instructorName, g.courseId, f.feedbackC
 	JOIN Do d ON d.studentId = s.studentId AND d.feedbackId = f.feedbackId
 	WHERE s.studentId = 'HE171073'
 	AND d.doStatus = 0
-
+	select * from Do 
 -- List feedbacks của 1 giảng viên  
 SELECT DISTINCT g.courseId, c.courseName, g.groupName, g.instructorId, f.feedbackOpenDay, f.feedbackCloseDay
 	FROM Feedback f 

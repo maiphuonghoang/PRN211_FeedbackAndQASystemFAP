@@ -1,0 +1,40 @@
+﻿@model List<Feedback>
+<h2>List of feedbacks</h2>
+<table class="table table-striped">
+    <thead>
+
+        <tr>
+            <th rowspan="2">Group name</th>
+            <th rowspan="2">Open day</th>
+            <th rowspan="2">Lecturer</th>
+            <th rowspan="2">Subject</th>
+            <th rowspan="2">Closing date</th>
+            <th rowspan="2">Do feedback</th>
+        </tr>
+
+    </thead>
+
+    @foreach (var f in Model)
+    {
+        <tr>
+            <td>@f.Group?.GroupName</td>
+            <td>@f.FeedbackOpenDay</td>
+            <td>@f.Group?.InstructorId</td>
+            <td>@f.Group?.CourseId</td>
+            <td>@f.FeedbackCloseDay</td>
+            <td>
+                @foreach (Do d in ViewBag.doStatus)
+                {
+                    if (d.Feedback?.FeedbackId == f.FeedbackId)
+                    {
+                        <a href="/Feedbacks/DoFeedback/@f.FeedbackId">@(d.DoStatus == true ? "Edit" : "Do")</a>
+                        break;
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+
+</table>
+
