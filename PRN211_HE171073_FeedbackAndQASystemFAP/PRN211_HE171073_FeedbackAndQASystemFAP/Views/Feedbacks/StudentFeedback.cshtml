@@ -9,6 +9,7 @@
             <th rowspan="2">Lecturer</th>
             <th rowspan="2">Subject</th>
             <th rowspan="2">Closing date</th>
+            <th rowspan="2">Responsed time</th>
             <th rowspan="2">Do feedback</th>
         </tr>
 
@@ -27,7 +28,23 @@
                 {
                     if (d.Feedback?.FeedbackId == f.FeedbackId)
                     {
-                        <a href="/Feedbacks/DoFeedback/@f.FeedbackId">@(d.DoStatus == true ? "Edit" : "Do")</a>
+                        <p>@d.DoTime</p>
+                    }
+                }
+            </td>
+            <td>
+                @foreach (Do d in ViewBag.doStatus)
+                {
+                    if (d.Feedback?.FeedbackId == f.FeedbackId)
+                    {
+                        if (d.DoStatus ==false)
+                        {
+                            <a href="/Feedbacks/DoFeedback/@f.FeedbackId"> Do</a>
+                        }
+                        else
+                        {
+                            <a href="/Feedbacks/EditFeedback/@f.FeedbackId"> Edit</a>
+                        }
                     }
                 }
             </td>

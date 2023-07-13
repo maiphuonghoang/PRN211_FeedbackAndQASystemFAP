@@ -1,0 +1,50 @@
+﻿@model List<FbQuestion>
+<link href="/css/dofeedback.css" rel="stylesheet" type="text/css" />
+<form asp-controller="Feedbacks" asp-action="EditFeedback" asp-route-id="@ViewBag.CurrentFeedback.FeedbackId" method="post">
+    @foreach (FbQuestion q in Model)
+    {
+        <div class="home-layout">
+            <div class="container">
+                <div class="card">
+                    <input type="hidden" name="fbQuestionId" value="@q.FbQuestionId" />
+                    <h4 class="card-header font-weight-bold">
+                        @q.FbQuestionTitle: @q.FbQuestionContent
+                    </h4>
+                    <div class="card-body">
+                        <div class="container">
+                            @foreach (var o in q.FbOptions)
+                            {
+                                <label class="radio-label">
+                                    <div class="option-button">
+                                        <input type="radio" name="fbQuestion_@q.FbQuestionId" value="@o.FbOptionId"
+                                        @(ViewBag.SelectedOptions.Contains(o.FbOptionId)?"checked":"")
+                                         required />
+                                        @o.FbOptionContent
+                                    </div>
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="home-layout">
+        <div class="container">
+            <div class="card">
+                <h4 class="card-header font-weight-bold">
+                    General feedback about teacher:
+                </h4>
+                <div class="card-body">
+                    <div class="container">
+                        <center><textarea name="doComment" rows="4" cols="70">@ViewBag.oldDo?.DoComment</textarea></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center><input class="btn" type="submit" value="Send" /></center>
+
+</form>
