@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 {
@@ -37,7 +38,6 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             List<Response> results = new List<Response>();
             if (f != null)
             {
-
                 results = _context.Responses
                                .Include(r => r.Do)
                                    .Where(f => f.Do.FeedbackId == Id && f.Do.DoStatus == true)
@@ -48,7 +48,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                     .Include(f => f.Group)
                                     .FirstOrDefault(f => f.FeedbackId == Id);
                 ViewBag.Does = _context.Dos
-                                .Where(d => d.FeedbackId == Id)
+                                .Where(d => d.FeedbackId == Id && d.DoStatus == true)
                                 .ToList();
             }
             return View(results);
@@ -67,43 +67,65 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             .ToList();
 
             ViewBag.doStatus = _context.Dos
-            .Where(d => feedbackIds.Contains(d.Feedback.FeedbackId)).ToList();
+            .Where(d => feedbackIds.Contains(d.Feedback.FeedbackId) && d.StudentId.Equals(roll)).ToList();
 
             return View(feedbacks);
         }
         public IActionResult DoFeedback(int Id)
         {
-            int id = Id;
+            string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
+            var canDo = _context.Dos.Where(d => d.FeedbackId == Id && d.StudentId.Equals(roll)).FirstOrDefault();
+            if (canDo == null)
+            {
+                return RedirectToAction("StudentFeedback"); ;
+            }
             List<FbQuestion> questions = _context.Feedbacks.Include(f => f.FbQuestions)
                 .ThenInclude(q => q.FbOptions)
                 .FirstOrDefault(f => f.FeedbackId == Id).FbQuestions.ToList();
-            ViewBag.CurrentFeedback = _context.Feedbacks.Where(f => f.FeedbackId == Id).FirstOrDefault();
+                ViewBag.CurrentFeedback = _context.Feedbacks.Where(f => f.FeedbackId == Id).FirstOrDefault();
             return View(questions);
         }
         [HttpPost]
         public IActionResult DoFeedback(int id, IFormCollection iformCollection)
         {
+            string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
+            var canDo = _context.Dos.Where(d => d.FeedbackId == id && d.StudentId.Equals(roll)).FirstOrDefault();
+            if (canDo == null)
+            {
+                return RedirectToAction("StudentFeedback");
+            }
+
             int feedbackId = id;
             string doComment = iformCollection["doComment"];
 
-            string[] fbQuestionIds = iformCollection["fbQuestionId"];
-            foreach (var fbQuestionId in fbQuestionIds)
+            //update Do table  
+            Do existDo = _context.Dos.FirstOrDefault(d => d.FeedbackId == feedbackId && d.StudentId.Equals(roll));
+            if (existDo != null)
             {
-                string fbOptionId = iformCollection["fbQuestion_" + fbQuestionId];
-            }
-            /*
-            foreach (var key in iformCollection.Keys)
-            {
-                if (key.StartsWith("fbQuestion_"))
+                existDo.DoStatus = true;
+                existDo.DoTime = DateTime.Now;
+                existDo.DoComment = doComment;
+
+                _context.SaveChanges();
+
+                //insert into Response
+                string[] fbQuestionIds = iformCollection["fbQuestionId"];
+                foreach (var fbQuestionId in fbQuestionIds)
                 {
-                    string fbQuestionId = key.Substring("fbQuestion_".Length);
-                    string answer = iformCollection[key];
-                    .WriteLine("Question ID: " + fbQuestionId);
-                    Console.WriteLine("Answer: " + answer);
+                    string fbOptionId = iformCollection["fbQuestion_" + fbQuestionId];
+                    Response response = new Response()
+                    {
+                        DoId = existDo.DoId,
+                        FbQuestionId = Convert.ToInt32(fbQuestionId),
+                        SelectedOptionId = Convert.ToInt32(fbOptionId),
+                    };
+                    _context.Add(response);
+                    _context.SaveChanges();
                 }
             }
-            */
-            return View();
+
+
+            return RedirectToAction("StudentFeedback");
         }
     }
 }

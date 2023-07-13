@@ -114,4 +114,7 @@ SELECT q.*, o.*
 	WHERE f.feedbackId = 28
 
 
-
+SELECT * FROM Do d
+	JOIN Student s ON d.studentId = s.studentId
+	-- WHERE s.studentId = 'HE171073'
+	WHERE d.feedbackId = 6

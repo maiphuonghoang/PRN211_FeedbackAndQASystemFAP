@@ -1,12 +1,14 @@
 ﻿@if (User.Identity.IsAuthenticated && User.IsInRole("Student"))
 {
     <a href="/">Ask mentor</a> <br/>
-    <a href="/">View question</a>
+    <a asp-controller="Questions" asp-action="ViewQAS">View question</a>
+    <br />
+    <a asp-controller="Feedbacks" asp-action="StudentFeedback">Feedback about teaching</a>
 }
 else if (User.Identity.IsAuthenticated && User.IsInRole("Instructor"))
 {
-    <a href="/">View feedback</a>
+    <a asp-controller="Feedbacks" asp-action="LecturerFeedback">View feedback</a>
     <br />
-    <a asp-controller="Questions" asp-action="ViewQAS">Student questions</a>
+    <a asp-controller="Questions" asp-action="LecturerQA">Student questions</a>
 }
 
