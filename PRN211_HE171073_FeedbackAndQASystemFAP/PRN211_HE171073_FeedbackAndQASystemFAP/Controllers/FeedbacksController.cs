@@ -5,6 +5,9 @@ using PRN211_HE171073_FeedbackAndQASystemFAP.Services;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 {
     public class FeedbacksController : Controller
@@ -60,21 +63,47 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             .Select(d => d.FeedbackId);
             List<Feedback> feedbacks = _context.Feedbacks
             .Where(f => feedbackIds.Contains(f.FeedbackId) && f.FeedbackOpenDay <= today && today <= f.FeedbackCloseDay)
-            .Include(f=>f.Group)
+            .Include(f => f.Group)
             .ToList();
 
             ViewBag.doStatus = _context.Dos
             .Where(d => feedbackIds.Contains(d.Feedback.FeedbackId)).ToList();
-            
+
             return View(feedbacks);
         }
         public IActionResult DoFeedback(int Id)
         {
             int id = Id;
             List<FbQuestion> questions = _context.Feedbacks.Include(f => f.FbQuestions)
-                .ThenInclude (q=>q.FbOptions)
+                .ThenInclude(q => q.FbOptions)
                 .FirstOrDefault(f => f.FeedbackId == Id).FbQuestions.ToList();
+            ViewBag.CurrentFeedback = _context.Feedbacks.Where(f => f.FeedbackId == Id).FirstOrDefault();
             return View(questions);
+        }
+        [HttpPost]
+        public IActionResult DoFeedback(int id, IFormCollection iformCollection)
+        {
+            int feedbackId = id;
+            string doComment = iformCollection["doComment"];
+
+            string[] fbQuestionIds = iformCollection["fbQuestionId"];
+            foreach (var fbQuestionId in fbQuestionIds)
+            {
+                string fbOptionId = iformCollection["fbQuestion_" + fbQuestionId];
+            }
+            /*
+            foreach (var key in iformCollection.Keys)
+            {
+                if (key.StartsWith("fbQuestion_"))
+                {
+                    string fbQuestionId = key.Substring("fbQuestion_".Length);
+                    string answer = iformCollection[key];
+                    .WriteLine("Question ID: " + fbQuestionId);
+                    Console.WriteLine("Answer: " + answer);
+                }
+            }
+            */
+            return View();
         }
     }
 }

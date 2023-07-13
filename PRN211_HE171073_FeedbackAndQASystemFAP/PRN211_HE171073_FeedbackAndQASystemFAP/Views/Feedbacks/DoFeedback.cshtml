@@ -1,11 +1,12 @@
 ﻿@model List<FbQuestion>
 <link href="/css/dofeedback.css" rel="stylesheet" type="text/css" />
-<form asp-controller="Feedbacks" asp-action="DoFeedback" method="post">
+<form asp-controller="Feedbacks" asp-action="DoFeedback" asp-route-id="@ViewBag.CurrentFeedback.FeedbackId" method="post">
     @foreach (FbQuestion q in Model)
     {
         <div class="home-layout">
             <div class="container">
                 <div class="card">
+                    <input type="hidden" name="fbQuestionId" value="@q.FbQuestionId"/>
                     <h4 class="card-header font-weight-bold">
                         @q.FbQuestionTitle: @q.FbQuestionContent
                     </h4>
@@ -15,8 +16,8 @@
                             {
                                 <label class="radio-label">
                                     <div class="option-button">
-                                        <input type="radio" name="fbOption_@q.FbQuestionId" value="@o.FbOptionId" />
-                                        @o.FbOptionContent
+                                        <input type="radio" name="fbQuestion_@q.FbQuestionId" value="@o.FbOptionId" required />
+                                        @o.FbOptionId @o.FbOptionContent
                                     </div>
                                 </label>
                             }
@@ -26,6 +27,22 @@
             </div>
         </div>
     }
+
+    <div class="home-layout">
+        <div class="container">
+            <div class="card">
+                <h4 class="card-header font-weight-bold">
+                    General feedback about teacher: 
+                </h4>
+                <div class="card-body">
+                    <div class="container">
+                        <center><textarea name="doComment" rows="4" cols="70"></textarea></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <center><input class="btn" type="submit" value="Send" /></center>
 
 </form>

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\css\\base.css"
     },
     {
+      "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\dofeedback.css",
+      "PackagePath": "staticwebassets\\css\\dofeedback.css"
+    },
+    {
       "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },

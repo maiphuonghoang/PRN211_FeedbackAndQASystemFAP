@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YX3rrepTVUAy+BPxuzAwedv05+DUxPFUOnzxQ3xU+7U=",
+  "Hash": "4AymRxFGEXDwtbRdBRWlVAwtxxRPh8o87+P2wyNYQbU=",
   "Source": "PRN211_HE171073_FeedbackAndQASystemFAP",
   "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
   "Mode": "Default",
@@ -32,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\base.css"
+    },
+    {
+      "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\dofeedback.css",
+      "SourceId": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "RelativePath": "css/dofeedback.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\dofeedback.css"
     },
     {
       "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\login.css",
