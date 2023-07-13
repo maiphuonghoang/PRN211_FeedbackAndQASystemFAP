@@ -1,0 +1,20 @@
+﻿
+.table-striped tr:nth-child(odd) {
+    background-color: rgba(242, 153, 74, 0.1);
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.table {
+    border-collapse: collapse;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+    .table td {
+        border-left-width: 0;
+        border-right-width: 0;
+    }
+

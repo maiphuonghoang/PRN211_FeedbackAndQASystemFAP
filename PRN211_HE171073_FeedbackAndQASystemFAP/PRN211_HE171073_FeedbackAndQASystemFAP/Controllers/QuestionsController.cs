@@ -62,5 +62,10 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 
             return View(questions);
         }
+
+        public IActionResult AskQA()
+        {
+            return View();
+        }
     }
 }
