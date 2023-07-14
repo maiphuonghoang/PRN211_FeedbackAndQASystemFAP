@@ -175,6 +175,9 @@ REFERENCES [Status] (statusId)
 ALTER TABLE Question ADD CONSTRAINT FK_Question_Group FOREIGN KEY(groupId)
 REFERENCES [Group] (groupId)
 
+ALTER TABLE Question ALTER COLUMN QuestionTitle nvarchar(100) NOT NULL;
+ALTER TABLE Question ALTER COLUMN questionDescription nvarchar(max) NOT NULL;
+
 CREATE TABLE Answer
 (
 	answerId int NOT NULL IDENTITY(1,1), 

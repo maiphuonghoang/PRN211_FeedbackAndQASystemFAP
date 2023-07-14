@@ -1,12 +1,14 @@
-﻿<link href="/css/askqa.css" rel="stylesheet" type="text/css" />
+﻿@using PRN211_HE171073_FeedbackAndQASystemFAP.Models
+<link href="/css/askqa.css" rel="stylesheet" type="text/css" />
 
+@model Question
 <h2>Create question</h2>
 <form asp-controller="Questions" asp-action="AskQA" method="post" enctype="multipart/form-data">
     <table class="table table-striped">
         <tr>
             <td>Subject Code:</td>
             <td>
-                <select name="courseId">
+                <select name="CourseId">
                     @foreach (Course c in ViewBag.subjects)
                     {
                         <option value="@c.CourseId">@c.CourseId - @c.CourseName</option>
@@ -17,7 +19,8 @@
         <tr>
             <td>Title:</td>
             <td>
-                <input type="text" name="questionTitle" required="true" style="width:350px;" />
+                <input asp-for="QuestionTitle" class="form-control" />
+                <span asp-validation-for="QuestionTitle" class="text-danger"></span>
             </td>
 
         </tr>
@@ -25,17 +28,15 @@
             <td>Question:</td>
             <td>
 
-                <textarea name="questionContent" rows="10" cols="20" style="width:700px;"></textarea>
-
-
-                <span style="color:Red;visibility:hidden;">Yêu cầu nhập dữ liệu</span>
+                <textarea asp-for="QuestionDescription" rows="10" cols="20" style="width:700px;"></textarea>
+                <span asp-validation-for="QuestionDescription"></span>
             </td>
 
         </tr>
         <tr>
             <td>File URL:</td>
             <td>
-                <input type="file" id="uploadImage" />
+                <input asp-for="MediaFile" type="file" name="uploadImage" />
                 <span style="text-align: left"></span>
             </td>
         </tr>

@@ -14,10 +14,11 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
     public class QuestionsController : Controller
     {
         private readonly PRN211_FeedbackAndQASystemContext _context;
-
-        public QuestionsController(PRN211_FeedbackAndQASystemContext context)
+        private readonly IWebHostEnvironment _webEnvironment;
+        public QuestionsController(PRN211_FeedbackAndQASystemContext context, IWebHostEnvironment webEnvironment)
         {
             _context = context;
+            _webEnvironment = webEnvironment;
         }
 
         //[Authorize(Roles = "Student")]
@@ -50,9 +51,9 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             List<Question> questions = questionService.GetQuestions(roll, Id, (Page - 1) * PageSize + 1, PageSize);
 
             //lấy các dữ liệu hiển thị các thanh Pager
-            int TotalProduct = questionService.GetNumberOfQuestions(roll, Id);
-            int TotalPage = TotalProduct / PageSize;
-            if (TotalProduct % PageSize != 0)
+            int TotalQuestion = questionService.GetNumberOfQuestions(roll, Id);
+            int TotalPage = TotalQuestion / PageSize;
+            if (TotalQuestion % PageSize != 0)
             {
                 TotalPage++;
             }
@@ -70,25 +71,26 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                 .Where(s => s.StudentId.Equals(roll)).FirstOrDefault().Groups.Select(g => g.Course).ToList();
             return View();
         }
+
+
         [HttpPost]
-        public IActionResult AskQA(IFormCollection iform)
+        public IActionResult AskQA(Question q, IFormCollection iform)
         {
             string courseId = iform["courseId"];
-            string questionTitle = iform["questionTitle"];
-            string questionContent = iform["questionContent"];
             string studentId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
             Group groupId = _context.Students.Include(s => s.Groups).Where(s => s.StudentId.Equals(studentId)).FirstOrDefault()
                 .Groups.Where(g => g.CourseId.Equals(courseId)).FirstOrDefault();
-            Question q = new Question
+
+            Question newq = new Question
             {
-                QuestionTitle = questionTitle,
-                QuestionDescription = questionContent,
+                QuestionTitle = q.QuestionTitle,
+                QuestionDescription = q.QuestionDescription,
                 QuestionSentTime = DateTime.Now,
                 StudentId = studentId,
                 GroupId = groupId.GroupId,
                 QuestionStatus = 0,
             };
-            _context.Add(q);
+            _context.Add(newq);
             _context.SaveChanges();
             return RedirectToAction("ViewQAS");
         }

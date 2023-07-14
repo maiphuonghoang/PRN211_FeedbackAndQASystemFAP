@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace PRN211_HE171073_FeedbackAndQASystemFAP.Models
 {
@@ -11,10 +14,17 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Models
         }
 
         public int QuestionId { get; set; }
-        public string? QuestionTitle { get; set; }
-        public string? QuestionDescription { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Question Title is not empty")]
+        public string QuestionTitle { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Question Description is not empty")]
+        public string QuestionDescription { get; set; }
         public DateTime? QuestionSentTime { get; set; }
         public string? FileUrl { get; set; }
+
+        [NotMapped]
+        public IFormFile MediaFile { get; set; }    
         public string? StudentId { get; set; }
         public int? GroupId { get; set; }
         public int? QuestionStatus { get; set; }
