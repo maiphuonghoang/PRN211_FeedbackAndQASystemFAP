@@ -65,7 +65,32 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 
         public IActionResult AskQA()
         {
+            string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
+            ViewBag.subjects = _context.Students.Include(s=>s.Groups).ThenInclude(g=>g.Course)
+                .Where(s=>s.StudentId.Equals(roll)).FirstOrDefault().Groups.Select(g=>g.Course).ToList();
             return View();
+        }
+        [HttpPost]
+        public IActionResult AskQA(IFormCollection iform)
+        {
+            string courseId = iform["courseId"];
+            string questionTitle = iform["questionTitle"];
+            string questionContent = iform["questionContent"];
+            string studentId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
+            Group groupId = _context.Students.Include(s => s.Groups).Where(s => s.StudentId.Equals(studentId)).FirstOrDefault()
+                .Groups.Where(g => g.CourseId.Equals(courseId)).FirstOrDefault();
+            Question q = new Question
+            {
+                QuestionTitle = questionTitle,
+                QuestionDescription = questionContent,
+                QuestionSentTime = DateTime.Now,
+                StudentId = studentId,
+                GroupId = groupId.GroupId,
+                QuestionStatus = 0,
+            };
+            _context.Add(q);
+            _context.SaveChanges();
+            return RedirectToAction("ViewQAS");
         }
     }
 }

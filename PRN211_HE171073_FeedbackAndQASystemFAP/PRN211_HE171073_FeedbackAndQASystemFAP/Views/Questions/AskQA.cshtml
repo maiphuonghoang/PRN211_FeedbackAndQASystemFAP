@@ -1,46 +1,51 @@
 ﻿<link href="/css/askqa.css" rel="stylesheet" type="text/css" />
 
 <h2>Create question</h2>
-<table class="table table-striped">
-    <tr>
-        <td>Subject Code:</td>
-        <td>
-            <input type="text" style="width:350px;" />
-            <input type="hidden"  />
-        </td>
-    </tr>
-    <tr>
-        <td>Title:</td>
-        <td>
-            <input type="text" required="true" style="width:350px;" />
-        </td>
+<form asp-controller="Questions" asp-action="AskQA" method="post" enctype="multipart/form-data">
+    <table class="table table-striped">
+        <tr>
+            <td>Subject Code:</td>
+            <td>
+                <select name="courseId">
+                    @foreach (Course c in ViewBag.subjects)
+                    {
+                        <option value="@c.CourseId">@c.CourseId - @c.CourseName</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Title:</td>
+            <td>
+                <input type="text" name="questionTitle" required="true" style="width:350px;" />
+            </td>
 
-    </tr>
-    <tr>
-        <td>Question:</td>
-        <td>
+        </tr>
+        <tr>
+            <td>Question:</td>
+            <td>
 
-            <textarea rows="10" cols="20" style="width:700px;">
-</textarea>
+                <textarea name="questionContent" rows="10" cols="20" style="width:700px;"></textarea>
 
 
-            <span style="color:Red;visibility:hidden;">Yêu cầu nhập dữ liệu</span>
-        </td>
+                <span style="color:Red;visibility:hidden;">Yêu cầu nhập dữ liệu</span>
+            </td>
 
-    </tr>
-    <tr>
-        <td>File URL:</td>
-        <td>
-            <input type="file" />
-            <span  style="text-align: left"></span>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>
-            <input class="btn" type="submit" value="Send Question"  />
-            <span style="text-align: left"></span>
-        </td>
-    </tr>
+        </tr>
+        <tr>
+            <td>File URL:</td>
+            <td>
+                <input type="file" id="uploadImage" />
+                <span style="text-align: left"></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input class="btn" type="submit" value="Send Question" />
+                <span style="text-align: left"></span>
+            </td>
+        </tr>
 
-</table>
+    </table>
+</form>

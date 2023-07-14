@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\askqa.css",
+      "PackagePath": "staticwebassets\\css\\askqa.css"
+    },
+    {
       "Id": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\css\\base.css",
       "PackagePath": "staticwebassets\\css\\base.css"
     },
