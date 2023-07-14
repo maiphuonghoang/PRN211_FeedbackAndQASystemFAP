@@ -28,9 +28,9 @@
             <td><span class='label label-info'>@q.QuestionTitle</span></td>
             <td style="width:250px;">
                 <div class="btn-group btn-group-xs">
-                    <a class="label label-danger " data-toggle="collapse" href="#d_9187">View Question</a>
+                    <a class="label label-danger " data-toggle="collapse" >View Question</a>
                 </div>
-                <div id="d_9187" class="collapse">
+                <div class="collapse">
                     <p>@q.QuestionDescription</p>
                 </div>
             </td>
@@ -40,7 +40,7 @@
                     @foreach (var answer in q.Answers)
                     {
                         <div class="btn-group btn-group-xs">
-                            <a class="label label-success " data-toggle="collapse" href="#d_9187">View Answer</a>
+                            <a class="label label-success " data-toggle="collapse" >View Answer - @answer.AnswerTime</a>
                         </div>
                         <div class="collapse">
                             <p>@answer.AnswerContent</p>

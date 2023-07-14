@@ -5,7 +5,7 @@
 <form asp-controller="Questions" asp-action="AnswerQA" method="post">
     <table class="table table-striped">
         <tr>
-            <input type="hidden" value="@Model.QuestionId" />
+            <input type="hidden" name="questionId" value="@Model.QuestionId" />
             <td colspan="2">
                 Student:
                 <span style="font-weight: 700; color: #800000; font-size: small">@Model.StudentId - @Model.Student.StudentName</span>
@@ -35,7 +35,7 @@
         <tr>
             <td></td>
             <td>
-                <input id="isReject" type="checkbox" /><label for="isReject">Reject</label>
+                <input id="isReject" name="isReject" type="checkbox" value="true" /><label for="isReject">Reject</label>
             </td>
 
         </tr>

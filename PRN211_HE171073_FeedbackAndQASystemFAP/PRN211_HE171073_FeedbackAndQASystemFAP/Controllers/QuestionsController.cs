@@ -25,13 +25,13 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
             var questions = _context.Questions
-                            .Include(q=>q.Student)
+                            .Include(q => q.Student)
                                 .ThenInclude(s => s.Groups)
-                                .ThenInclude(g=> g.Course)
+                                .ThenInclude(g => g.Course)
                             .Include(q => q.Answers)
                             .Where(q => q.Student.StudentId.Equals(roll))
-                            .OrderBy(q=>q.QuestionStatus)
-                            .ThenByDescending(q=>q.QuestionSentTime)
+                            .OrderBy(q => q.QuestionStatus)
+                            .ThenByDescending(q => q.QuestionSentTime)
                             .ToList();
             return View(questions);
         }
@@ -66,8 +66,8 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         public IActionResult AskQA()
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
-            ViewBag.subjects = _context.Students.Include(s=>s.Groups).ThenInclude(g=>g.Course)
-                .Where(s=>s.StudentId.Equals(roll)).FirstOrDefault().Groups.Select(g=>g.Course).ToList();
+            ViewBag.subjects = _context.Students.Include(s => s.Groups).ThenInclude(g => g.Course)
+                .Where(s => s.StudentId.Equals(roll)).FirstOrDefault().Groups.Select(g => g.Course).ToList();
             return View();
         }
         [HttpPost]
@@ -95,14 +95,37 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 
         public IActionResult AnswerQA(int Id)
         {
-            Question stuQuestion = _context.Questions.Include(q=>q.Student).FirstOrDefault(q => q.QuestionId == Id);
+            Question stuQuestion = _context.Questions.Include(q => q.Student).FirstOrDefault(q => q.QuestionId == Id);
             ViewBag.courseId = _context.Questions.Include(q => q.Group).Where(q => q.QuestionId == Id).FirstOrDefault().Group.CourseId;
             return View(stuQuestion);
         }
         [HttpPost]
-        public IActionResult AnswerQA()
+        public IActionResult AnswerQA(IFormCollection iform)
         {
-            return View();
+            int questionId = Convert.ToInt32(iform["questionId"]);
+            string answerContent = iform["answerContent"];
+            bool isReject = iform.ContainsKey("isReject") && bool.Parse(iform["isReject"]);
+            Question existQuestion = _context.Questions.Where(q => q.QuestionId == questionId).FirstOrDefault();
+            //update Question 
+            if (existQuestion != null)
+            {
+                existQuestion.QuestionStatus = isReject ? 2 : 1;
+                _context.SaveChanges();
+                //insert answer 
+                if (!isReject)
+                {
+                    Answer a = new Answer
+                    {
+                        AnswerContent = answerContent,
+                        AnswerTime = DateTime.Now,
+                        QuestionId = questionId,
+                    };
+                    _context.Answers.Add(a);
+                    _context.SaveChanges();
+                }
+            }
+            return RedirectToAction("LecturerQA");
+
         }
     }
 }
