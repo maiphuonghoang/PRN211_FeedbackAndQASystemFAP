@@ -1,0 +1,65 @@
+﻿@model Question
+<link href="/css/askqa.css" rel="stylesheet" type="text/css" />
+
+<h2>Answer questions</h2>
+<form asp-controller="Questions" asp-action="AnswerQA" method="post">
+    <table class="table table-striped">
+        <tr>
+            <input type="hidden" value="@Model.QuestionId" />
+            <td colspan="2">
+                Student:
+                <span style="font-weight: 700; color: #800000; font-size: small">@Model.StudentId - @Model.Student.StudentName</span>
+                - Subject:
+                <span style="color: #990033; font-weight: 700; font-size: small">@ViewBag.courseId</span>
+
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <span>Question Details:</span>
+            </td>
+            <td colspan="2">
+                <div class="label label-info">@Model.QuestionTitle</div>
+                <div class=""><p>@Model.QuestionDescription</p></div>
+                @if (Model.FileUrl != null)
+                {
+                    <div class="text text-default"><a href='https://fap.fpt.edu.vn/temp/Mooc\1a5a3822-a902-4596-8fb1-ceb1dc6053b3\1.png'>Download attached file</a></div>
+                }
+
+            </td>
+
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input id="isReject" type="checkbox" /><label for="isReject">Reject</label>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <span>Answer Question:</span>
+            </td>
+            <td>
+                <textarea name="answerContent" rows="6" cols="20" style="width:700px;"></textarea>
+                <span style="color:Red;visibility:hidden;">Yêu cầu nhập dữ liệu</span>
+            </td>
+        </tr>
+        <tr>
+            <td>File URL:</td>
+            <td>
+                <input type="file" id="uploadImage" />
+                <span style="text-align: left"></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" class="btn" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</form>

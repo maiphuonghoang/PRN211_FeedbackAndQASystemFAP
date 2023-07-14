@@ -80,18 +80,22 @@
                             }
                         </td>
                         <td>
-                            @if (q.QuestionStatus == 0)
-                            {
-                                <span class='label label-warning'>Processing</span>
-                            }
-                            else if (q.QuestionStatus == 1)
-                            {
-                                <span class='label label-danger'>Processed</span>
-                            }
-                            else
-                            {
-                                <span class='label label-default'>Reject</span>
-                            }
+                            
+                            <a href="/Questions/AnswerQA/@q.QuestionId">
+                                @if (q.QuestionStatus == 0)
+                                {
+                                    <span class='label label-warning'>Processing</span>
+                                }
+                                else if (q.QuestionStatus == 1)
+                                {
+                                    <span class='label label-danger'>Processed</span>
+                                }
+                                else
+                                {
+                                    <span class='label label-default'>Reject</span>
+                                }
+
+                            </a>
                         </td>
                     </tr>
                 }

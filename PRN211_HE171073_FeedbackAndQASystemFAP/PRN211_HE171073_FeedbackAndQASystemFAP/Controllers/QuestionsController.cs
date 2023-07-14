@@ -92,5 +92,17 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             _context.SaveChanges();
             return RedirectToAction("ViewQAS");
         }
+
+        public IActionResult AnswerQA(int Id)
+        {
+            Question stuQuestion = _context.Questions.Include(q=>q.Student).FirstOrDefault(q => q.QuestionId == Id);
+            ViewBag.courseId = _context.Questions.Include(q => q.Group).Where(q => q.QuestionId == Id).FirstOrDefault().Group.CourseId;
+            return View(stuQuestion);
+        }
+        [HttpPost]
+        public IActionResult AnswerQA()
+        {
+            return View();
+        }
     }
 }
