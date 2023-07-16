@@ -5,13 +5,22 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>JSP Page</title>
     <link href="/css/login.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <style>
+        .text-danger {
+            color: red;
+            font-weight: 600;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -29,14 +38,13 @@
                 <div class="form-group">
                     <label asp-for="Username" class="form-label" placeholder="abc@fpt.edu.vn">Username:</label>
                     <input asp-for="Username" class="form-control">
+                    <span asp-validation-for="Username" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password" class="form-label">Password:</label>
                     <input asp-for="Password" class="form-control">
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
-                <h3 style="color: red"></h3>
-
-                <h3>Remember your account <input type="checkbox" name="remember" value="true" /></h3><br>
 
                 <span class="text-danger">@((string)ViewBag.Msg)</span><br />
                 <input class="form-submit" type="submit" value="Login" />

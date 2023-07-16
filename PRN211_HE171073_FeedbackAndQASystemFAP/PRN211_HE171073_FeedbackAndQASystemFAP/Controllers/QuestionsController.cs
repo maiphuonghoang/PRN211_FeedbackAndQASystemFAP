@@ -21,7 +21,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             _webEnvironment = webEnvironment;
         }
 
-        //[Authorize(Roles = "Student")]
+        [Authorize(Roles = "Student")]
         public IActionResult ViewQAS()
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
@@ -36,6 +36,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                             .ToList();
             return View(questions);
         }
+        [Authorize(Roles = "Instructor")]
         public IActionResult LecturerQA(int Id, int Page)
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
@@ -64,6 +65,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             return View(questions);
         }
 
+        [Authorize(Roles = "Student")]
         public IActionResult AskQA()
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
@@ -72,7 +74,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "Student")]
         [HttpPost]
         public IActionResult AskQA(Question q, IFormCollection iform)
         {
@@ -94,13 +96,14 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             _context.SaveChanges();
             return RedirectToAction("ViewQAS");
         }
-
+        [Authorize(Roles = "Instructor")]
         public IActionResult AnswerQA(int Id)
         {
             Question stuQuestion = _context.Questions.Include(q => q.Student).FirstOrDefault(q => q.QuestionId == Id);
             ViewBag.courseId = _context.Questions.Include(q => q.Group).Where(q => q.QuestionId == Id).FirstOrDefault().Group.CourseId;
             return View(stuQuestion);
         }
+        [Authorize(Roles = "Instructor")]
         [HttpPost]
         public IActionResult AnswerQA(IFormCollection iform)
         {

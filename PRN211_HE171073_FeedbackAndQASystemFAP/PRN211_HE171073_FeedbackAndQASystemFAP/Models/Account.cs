@@ -11,11 +11,12 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Models
             Roles = new HashSet<Role>();
         }
 
-        [Required(ErrorMessage = "Username is not empty")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Username is not empty")]
         [EmailAddress]
         public string Username { get; set; } = null!;
 
         [Required(ErrorMessage = "Password is not empty")]
+        [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "Password must contain only lowercase characters, uppercase characters, and numbers.")]
         [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
 

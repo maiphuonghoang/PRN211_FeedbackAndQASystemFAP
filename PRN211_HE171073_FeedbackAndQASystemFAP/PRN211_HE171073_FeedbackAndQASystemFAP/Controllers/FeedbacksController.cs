@@ -8,6 +8,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 {
@@ -19,6 +21,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "Instructor")]
         public IActionResult LecturerFeedback()
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
@@ -31,6 +34,8 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 
             return View(feedbacks);
         }
+
+        [Authorize(Roles = "Instructor")]
         public IActionResult FeedbackGPA(int Id)
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
@@ -53,6 +58,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             }
             return View(results);
         }
+        [Authorize(Roles = "Student")]
         public IActionResult StudentFeedback()
         {
             DateTime today = DateTime.Now;
@@ -70,6 +76,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 
             return View(feedbacks);
         }
+        [Authorize(Roles = "Student")]
         public IActionResult DoFeedback(int Id)
         {
             if (!validFeedbackBelongStudent(Id))
@@ -82,6 +89,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                 ViewBag.CurrentFeedback = _context.Feedbacks.Where(f => f.FeedbackId == Id).FirstOrDefault();
             return View(questions);
         }
+        [Authorize(Roles = "Student")]
         [HttpPost]
         public IActionResult DoFeedback(int id, IFormCollection iformCollection)
         {
@@ -129,6 +137,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             var canDo = _context.Dos.Where(d => d.FeedbackId == feedbackId && d.StudentId.Equals(roll)).FirstOrDefault();
             return canDo != null;
         }
+        [Authorize(Roles = "Student")]
         public IActionResult EditFeedback(int Id)
         {
            
@@ -151,6 +160,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             return View(questions);
         }
 
+        [Authorize(Roles = "Student")]
         [HttpPost]
         public IActionResult EditFeedback(int id, IFormCollection iformCollection)
         {
@@ -176,10 +186,6 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                 //delete Response cũ, insert response mới 
                 var oldResponse = _context.Dos.Include(d => d.Responses).Where(d => d.FeedbackId == feedbackId && d.StudentId.Equals(roll))
                 .FirstOrDefault().Responses.ToList();
-                //foreach (var r in oldResponse)
-                //{
-                //    _context.Remove(r);
-                //}
                 _context.Responses.RemoveRange(oldResponse);
 
                 string[] fbQuestionIds = iformCollection["fbQuestionId"];
