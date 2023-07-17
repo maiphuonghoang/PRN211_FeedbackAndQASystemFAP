@@ -10,7 +10,12 @@
 @{
     int index = 1;
 }
-
+<style>
+    .active {
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
 <li><a href="/Questions/LecturerQA">All Group</a></li>
 @foreach (Group g in ViewBag.Groups)
 {
@@ -80,7 +85,7 @@
                             }
                         </td>
                         <td>
-                            
+
                             <a href="/Questions/AnswerQA/@q.QuestionId">
                                 @if (q.QuestionStatus == 0)
                                 {
@@ -106,10 +111,12 @@
 
         }
     </div>
+    <center>
 
-    <pager total-page='@((int)ViewData["TotalPage"])'
-           current-page='@((int)ViewData["CurrentPage"])'
-           url="/Questions/LecturerQA/@ViewData["CurrentGroup"]"
-           active-class="active">
-    </pager>
+        <pager total-page='@((int)ViewData["TotalPage"])'
+               current-page='@((int)ViewData["CurrentPage"])'
+               url="/Questions/LecturerQA/@ViewData["CurrentGroup"]"
+               active-class="active">
+        </pager>
+    </center>
 </div>

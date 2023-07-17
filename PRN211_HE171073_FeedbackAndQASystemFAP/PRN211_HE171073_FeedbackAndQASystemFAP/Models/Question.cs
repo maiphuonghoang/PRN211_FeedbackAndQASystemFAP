@@ -21,10 +21,10 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Question Description is not empty")]
         public string QuestionDescription { get; set; }
         public DateTime? QuestionSentTime { get; set; }
-        public string? FileUrl { get; set; }
+        //public string? FileUrl { get; set; }
 
-        [NotMapped]
-        public IFormFile MediaFile { get; set; }    
+        //[NotMapped]
+        //public IFormFile MediaFile { get; set; }    
         public string? StudentId { get; set; }
         public int? GroupId { get; set; }
         public int? QuestionStatus { get; set; }

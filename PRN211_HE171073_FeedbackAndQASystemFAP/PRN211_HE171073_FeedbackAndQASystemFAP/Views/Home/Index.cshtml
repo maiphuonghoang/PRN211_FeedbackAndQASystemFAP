@@ -1,6 +1,7 @@
 ﻿@if (User.Identity.IsAuthenticated && User.IsInRole("Student"))
 {
-    <a href="/">Ask mentor</a> <br/>
+    <a asp-controller="Questions" asp-action="AskQA">Ask mentor</a>
+    <br />
     <a asp-controller="Questions" asp-action="ViewQAS">View question</a>
     <br />
     <a asp-controller="Feedbacks" asp-action="StudentFeedback">Feedback about teaching</a>

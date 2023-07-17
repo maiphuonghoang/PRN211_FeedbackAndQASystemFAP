@@ -314,9 +314,9 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Models
 
                 entity.Property(e => e.QuestionId).HasColumnName("questionId");
 
-                entity.Property(e => e.FileUrl)
-                    .IsUnicode(false)
-                    .HasColumnName("fileURL");
+                //entity.Property(e => e.FileUrl)
+                //    .IsUnicode(false)
+                //    .HasColumnName("fileURL");
 
                 entity.Property(e => e.GroupId).HasColumnName("groupId");
 

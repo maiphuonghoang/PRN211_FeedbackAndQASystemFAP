@@ -23,14 +23,35 @@
                 <div class="header__navbar">
 
                     <ul class="header__list">
-                        <li class="header__item">
-                            <a class="header__link panel" href="timetable">Question</a>
-                        </li>
-                        <li class="header__item">
-                            <a class="header__link panel" href="reportattend">Feedback</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Student"))
+                        {
+                            <li class="header__item">
+                                <a class="header__link panel" asp-controller="Questions" asp-action="AskQA">Ask mentor</a>
+                            </li>
+                            <li class="header__item">
+                                <a class="header__link panel" asp-controller="Questions" asp-action="ViewQAS">View question</a>
+                            </li>
+                            <li class="header__item">
+                                <a class="header__link panel" asp-controller="Feedbacks" asp-action="StudentFeedback">Feedback about teaching</a>
+                            </li>
+
+                        }
+                        else if (User.Identity.IsAuthenticated && User.IsInRole("Instructor"))
+                        {
+                            <li class="header__item">
+                                <a class="header__link panel" asp-controller="Feedbacks" asp-action="LecturerFeedback">View feedback</a>
+                            </li>
+                            <li class="header__item">
+                                <a class="header__link panel" asp-controller="Questions" asp-action="LecturerQA">Student questions</a>
+                            </li>
+
+                        }
+
 
                     </ul>
+
+
+
                     <div>
                         <a href="" class="label label-hover">@User.Identity.Name</a>&nbsp|
                         <a asp-controller="Accounts" asp-action="Logout" class="label label-danger">Logout</a>&nbsp|

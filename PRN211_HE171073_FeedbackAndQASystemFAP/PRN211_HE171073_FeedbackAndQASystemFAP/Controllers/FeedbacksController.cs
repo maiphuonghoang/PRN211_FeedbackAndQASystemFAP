@@ -21,7 +21,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         {
             _context = context;
         }
-        [Authorize(Roles = "Instructor")]
+        //[Authorize(Roles = "Instructor")]
         public IActionResult LecturerFeedback()
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
@@ -35,7 +35,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             return View(feedbacks);
         }
 
-        [Authorize(Roles = "Instructor")]
+        //[Authorize(Roles = "Instructor")]
         public IActionResult FeedbackGPA(int Id)
         {
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
@@ -58,7 +58,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             }
             return View(results);
         }
-        [Authorize(Roles = "Student")]
+        //[Authorize(Roles = "Student")]
         public IActionResult StudentFeedback()
         {
             DateTime today = DateTime.Now;
@@ -76,7 +76,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
 
             return View(feedbacks);
         }
-        [Authorize(Roles = "Student")]
+        //[Authorize(Roles = "Student")]
         public IActionResult DoFeedback(int Id)
         {
             if (!validFeedbackBelongStudent(Id))
@@ -137,7 +137,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             var canDo = _context.Dos.Where(d => d.FeedbackId == feedbackId && d.StudentId.Equals(roll)).FirstOrDefault();
             return canDo != null;
         }
-        [Authorize(Roles = "Student")]
+        //[Authorize(Roles = "Student")]
         public IActionResult EditFeedback(int Id)
         {
            
@@ -160,7 +160,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             return View(questions);
         }
 
-        [Authorize(Roles = "Student")]
+        //[Authorize(Roles = "Student")]
         [HttpPost]
         public IActionResult EditFeedback(int id, IFormCollection iformCollection)
         {

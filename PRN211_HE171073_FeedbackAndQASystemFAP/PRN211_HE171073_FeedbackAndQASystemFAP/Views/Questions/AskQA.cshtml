@@ -3,7 +3,7 @@
 
 @model Question
 <h2>Create question</h2>
-<form asp-controller="Questions" asp-action="AskQA" method="post" enctype="multipart/form-data">
+<form asp-controller="Questions" asp-action="AskQA" method="post" >
     <table class="table table-striped">
         <tr>
             <td>Subject Code:</td>
@@ -36,15 +36,14 @@
         <tr>
             <td>File URL:</td>
             <td>
-                <input asp-for="MediaFile" type="file" name="uploadImage" />
+                <input  type="file" name="uploadImage" />
                 <span style="text-align: left"></span>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-                <input class="btn" type="submit" value="Send Question" />
-                <span style="text-align: left"></span>
+                <input type="submit" class="btn" value="Send" />
             </td>
         </tr>
 
