@@ -1,9 +1,8 @@
 ﻿@using PRN211_HE171073_FeedbackAndQASystemFAP.Models
 <link href="/css/askqa.css" rel="stylesheet" type="text/css" />
-
 @model Question
 <h2>Create question</h2>
-<form asp-controller="Questions" asp-action="AskQA" method="post" >
+<form asp-controller="Questions" asp-action="AskQA" method="post" enctype="multipart/form-data">
     <table class="table table-striped">
         <tr>
             <td>Subject Code:</td>
@@ -20,7 +19,7 @@
             <td>Title:</td>
             <td>
                 <input asp-for="QuestionTitle" class="form-control" />
-                <span asp-validation-for="QuestionTitle" class="text-danger"></span>
+                <span class="text-danger" asp-validation-for="QuestionTitle" class="text-danger"></span>
             </td>
 
         </tr>
@@ -28,16 +27,20 @@
             <td>Question:</td>
             <td>
 
-                <textarea asp-for="QuestionDescription" rows="10" cols="20" style="width:700px;"></textarea>
-                <span asp-validation-for="QuestionDescription"></span>
+                <textarea asp-for="QuestionDescription" rows="10" cols="20" style="width:700px;"></textarea><br/>
+                <span class="text-danger" asp-validation-for="QuestionDescription"></span>
             </td>
 
         </tr>
         <tr>
             <td>File URL:</td>
             <td>
-                <input  type="file" name="uploadImage" />
+                <input type="file" asp-for="MediaFile" />
                 <span style="text-align: left"></span>
+                @if (!string.IsNullOrEmpty(@ViewBag.InvalidFile))
+                {
+                    <p class="text-danger">@ViewBag.InvalidFile</p>
+                }
             </td>
         </tr>
         <tr>

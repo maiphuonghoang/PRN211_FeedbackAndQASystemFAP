@@ -14,11 +14,11 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
     public class QuestionsController : Controller
     {
         private readonly PRN211_FeedbackAndQASystemContext _context;
-        private readonly IWebHostEnvironment _webEnvironment;
-        public QuestionsController(PRN211_FeedbackAndQASystemContext context, IWebHostEnvironment webEnvironment)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public QuestionsController(PRN211_FeedbackAndQASystemContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
-            _webEnvironment = webEnvironment;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         //[Authorize(Roles = "Student")]
@@ -78,16 +78,49 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         [HttpPost]
         public IActionResult AskQA(Question q, IFormCollection iform)
         {
+            string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
             string courseId = iform["courseId"];
             string studentId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
             Group groupId = _context.Students.Include(s => s.Groups).Where(s => s.StudentId.Equals(studentId)).FirstOrDefault()
                 .Groups.Where(g => g.CourseId.Equals(courseId)).FirstOrDefault();
+
+            q.FileUrl = null;
+            //xử lí upload file 
+            if (q.MediaFile != null && q.MediaFile.Length > 0)
+            {
+                var fileExtension = Path.GetExtension(q.MediaFile.FileName).ToLower();
+                var validExtensions = new[] { ".jpg", ".jpeg", ".png", ".doc", ".docx", ".xls", ".xlsx", ".pdf" };
+
+                if (validExtensions.Contains(fileExtension))
+                {
+                    var fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + roll + Path.GetExtension(q.MediaFile.FileName);
+                    var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "file", "question");
+                    //đường dẫn thư mục gốc C:\Users\Admin\Desktop\Project\wwwroot\img\question 
+                    var filePath = Path.Combine(uploadPath, fileName);
+                    using (FileStream fs = System.IO.File.Create(filePath))
+                    {
+                        q.MediaFile.CopyTo(fs);
+                        //Copy file tạm vào đường dẫn vừa tạo trên Server 
+                        fs.Flush();
+                    }
+                    q.FileUrl = fileName;
+                }
+                else
+                {
+                    ViewBag.InvalidFile = "File type not supported (only .jpg,jpeg,png,gif,doc,docx,xls,xlsx,pdf. Please choose a valid file type.";
+                    ViewBag.subjects = _context.Students.Include(s => s.Groups).ThenInclude(g => g.Course)
+                                        .Where(s => s.StudentId.Equals(roll)).FirstOrDefault().Groups.Select(g => g.Course).ToList();
+                    return View(q);
+                }
+
+            }
 
             Question newq = new Question
             {
                 QuestionTitle = q.QuestionTitle,
                 QuestionDescription = q.QuestionDescription,
                 QuestionSentTime = DateTime.Now,
+                FileUrl = q.FileUrl,
                 StudentId = studentId,
                 GroupId = groupId.GroupId,
                 QuestionStatus = 0,
@@ -96,6 +129,8 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             _context.SaveChanges();
             return RedirectToAction("ViewQAS");
         }
+
+
         //[Authorize(Roles = "Instructor")]
         public IActionResult AnswerQA(int Id)
         {

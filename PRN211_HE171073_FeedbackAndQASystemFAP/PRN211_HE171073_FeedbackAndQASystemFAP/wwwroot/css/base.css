@@ -200,5 +200,10 @@ th{
     color: #2199d5;
 
 }
+.text-danger {
+    color: red;
+    font-weight: 600;
+    font-size: 12px;
+}
 
 
