@@ -40,7 +40,6 @@
                         <th style="width:250px;">...</th>
                         <th>SENT TIME</th>
                         <th style="width:250px;">...</th>
-                        <th>Replied time</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -48,6 +47,7 @@
                 @foreach (var q in Model)
                 {
                     <tr>
+
                         <td style="width: 20px;">@(index++)</td>
                         <td><span class='label label-info'>@q.StudentId</span></td>
                         <td><span class='label label-default'>@q.Group?.CourseId</span></td>
@@ -59,6 +59,12 @@
                             <div class="collapse">
                                 <p>@q.QuestionDescription</p>
                             </div>
+                            @if (!string.IsNullOrEmpty(q.FileUrl))
+                            {
+                                <div class="btn-group btn-group-xs">
+                                    <a href="@Url.Content("~/file/question/" + q.FileUrl)">Attach File</a>
+                                </div>
+                            }
                         </td>
                         <td>@q.QuestionSentTime</td>
                         <td style="width:250px;">
@@ -67,42 +73,34 @@
                                 @foreach (var answer in q.Answers)
                                 {
                                     <div class="btn-group btn-group-xs">
-                                        <a class="label label-success " data-toggle="collapse">View Answer</a>
+                                        <a class="label label-success " data-toggle="collapse">View Answer at @answer.AnswerTime</a>
                                     </div>
                                     <div class="collapse">
-                                        <p>@answer.AnswerContent</p>
+                                        <p>@answer.AnswerContent </p>
                                     </div>
                                 }
                             }
                         </td>
                         <td>
-                            @if (q.QuestionStatus == 1)
-                            {
-                                @foreach (var answer in q.Answers)
-                                {
-                                    <p>@answer.AnswerTime</p>
-                                }
-                            }
-                        </td>
-                        <td>
-
                             <a href="/Questions/AnswerQA/@q.QuestionId">
-                                @if (q.QuestionStatus == 0)
-                                {
-                                    <span class='label label-warning'>Processing</span>
-                                }
-                                else if (q.QuestionStatus == 1)
-                                {
-                                    <span class='label label-danger'>Processed</span>
-                                }
-                                else
-                                {
-                                    <span class='label label-default'>Reject</span>
-                                }
+                            @if (q.QuestionStatus == 0)
+                            {
+                                <span class='label label-warning'>Processing</span>
+                            }
+                            else if (q.QuestionStatus == 1)
+                            {
+                                <span class='label label-danger'>Processed</span>
+                            }
+                            else
+                            {
+                                <span class='label label-default'>Reject</span>
+                            }
 
                             </a>
                         </td>
+
                     </tr>
+
                 }
 
 

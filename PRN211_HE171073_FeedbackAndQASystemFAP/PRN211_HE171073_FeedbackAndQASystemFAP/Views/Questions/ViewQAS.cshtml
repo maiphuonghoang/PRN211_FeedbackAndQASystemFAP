@@ -33,7 +33,16 @@
                 </div>
                 <div class="collapse">
                     <p>@q.QuestionDescription</p>
+                    @if (!string.IsNullOrEmpty(q.FileUrl))
+                    {
+                        <div class="btn-group btn-group-xs">
+                            <a href="@Url.Content("~/file/question/" + q.FileUrl)">Attach File</a>
+                        </div>
+                    }
+                    
                 </div>
+               
+                
             </td>
             <td style="width:250px;">
                 @if (q.QuestionStatus == 1)
@@ -46,6 +55,7 @@
                         <div class="collapse">
                             <p>@answer.AnswerContent</p>
                         </div>
+                        
                     }
                 }
             </td>

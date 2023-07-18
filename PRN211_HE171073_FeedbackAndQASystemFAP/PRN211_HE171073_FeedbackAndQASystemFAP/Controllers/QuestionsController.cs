@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PRN211_HE171073_FeedbackAndQASystemFAP.Models;
@@ -135,6 +136,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         public IActionResult AnswerQA(int Id)
         {
             Question stuQuestion = _context.Questions.Include(q => q.Student).FirstOrDefault(q => q.QuestionId == Id);
+            ViewBag.findFileName = Path.GetExtension(stuQuestion.FileUrl).ToLower().ToString();
             ViewBag.courseId = _context.Questions.Include(q => q.Group).Where(q => q.QuestionId == Id).FirstOrDefault().Group.CourseId;
             return View(stuQuestion);
         }
@@ -167,5 +169,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             return RedirectToAction("LecturerQA");
 
         }
+
+
     }
 }

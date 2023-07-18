@@ -1,4 +1,7 @@
-﻿@model Question
+﻿@using System.IO
+@using System.Collections.Generic;
+@using System.Linq;
+@model Question
 <link href="/css/askqa.css" rel="stylesheet" type="text/css" />
 
 <h2>Answer questions</h2>
@@ -23,8 +26,30 @@
             <td colspan="2">
                 <div class="label label-info">@Model.QuestionTitle</div>
                 <div class=""><p>@Model.QuestionDescription</p></div>
-               
+                <div style="margin-top:10px">
+                    @if (!string.IsNullOrEmpty(@Model.FileUrl))
+                    {
+                        var fileExtension = ViewBag.findFileName;
+                        var imageExtensions = new List<string> { ".jpg", ".jpeg", ".png", ".gif" };
+                        var pdfExtensions = new List<string> { ".pdf" };
+                        var excelExtensions = new List<string> { ".xls", ".xlsx" };
+                        var docExtensions = new List<string> { ".doc", ".docx" };
 
+                        if (imageExtensions.Contains(fileExtension))
+                        {
+                            <img src="@Url.Content("~/file/question/" + @Model.FileUrl)" width="30%" alt="Attached Image" />
+                        }
+                        else if (pdfExtensions.Contains(fileExtension))
+                        {
+                            <embed src="@Url.Content("~/file/question/" + @Model.FileUrl)" width="80%" height="400px" type="application/pdf"></embed>
+                        }
+                        else if (excelExtensions.Contains(fileExtension) || docExtensions.Contains(fileExtension))
+                        {
+                            <a href="@Url.Action("DownloadFile", "File", new { fileName = @Model.FileUrl})">Download File</a>
+                        }
+
+                    }
+                </div>
             </td>
 
         </tr>
@@ -45,13 +70,15 @@
                 <span style="color:Red;visibility:hidden;">Yêu cầu nhập dữ liệu</span>
             </td>
         </tr>
+        @*
         <tr>
-            <td>File URL:</td>
-            <td>
-                <input type="file" id="uploadImage" />
-                <span style="text-align: left"></span>
-            </td>
+        <td>File URL:</td>
+        <td>
+        <input type="file" id="uploadImage" />
+        <span style="text-align: left"></span>
+        </td>
         </tr>
+        *@
         <tr>
             <td></td>
             <td>
