@@ -45,7 +45,8 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             {
                 results = _context.Responses
                                .Include(r => r.Do)
-                                   .Where(f => f.Do.FeedbackId == Id && f.Do.DoStatus == true)
+                                   //.Where(f => f.Do.FeedbackId == Id && f.Do.DoStatus == true)
+                                   .Where(f => f.Do.FeedbackId == Id && f.Do.DoStatus > 0)
                                .Include(r => r.FbQuestion)
                                    .ThenInclude(q => q.FbOptions)
                                .ToList();
@@ -53,7 +54,8 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                     .Include(f => f.Group)
                                     .FirstOrDefault(f => f.FeedbackId == Id);
                 ViewBag.Does = _context.Dos
-                                .Where(d => d.FeedbackId == Id && d.DoStatus == true)
+                                //.Where(d => d.FeedbackId == Id && d.DoStatus == true)
+                                .Where(d => d.FeedbackId == Id && d.DoStatus > 0)
                                 .ToList();
             }
             return View(results);
@@ -106,7 +108,8 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             Do existDo = _context.Dos.FirstOrDefault(d => d.FeedbackId == feedbackId && d.StudentId.Equals(roll));
             if (existDo != null)
             {
-                existDo.DoStatus = true;
+                existDo.DoStatus = existDo.DoStatus + 1;
+                //existDo.DoStatus = true;
                 existDo.DoTime = DateTime.Now;
                 existDo.DoComment = doComment;
 
@@ -180,7 +183,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
             {
                 existDo.DoTime = DateTime.Now;
                 existDo.DoComment = doComment;
-
+                existDo.DoStatus = existDo.DoStatus + 1;
                 _context.SaveChanges();
 
                 //delete Response cũ, insert response mới 
@@ -203,7 +206,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
                 }
             }
 
-
+            existDo.DoStatus = existDo.DoStatus;
             return RedirectToAction("StudentFeedback");
         }
     }

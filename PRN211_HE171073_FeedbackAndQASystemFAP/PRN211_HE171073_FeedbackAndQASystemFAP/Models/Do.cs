@@ -11,7 +11,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Models
         }
 
         public int DoId { get; set; }
-        public bool? DoStatus { get; set; }
+        public int? DoStatus { get; set; }
         public int? FeedbackId { get; set; }
         public string? StudentId { get; set; }
         public DateTime? DoTime { get; set; }

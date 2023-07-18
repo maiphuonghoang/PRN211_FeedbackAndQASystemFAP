@@ -37,13 +37,18 @@
                 {
                     if (d.Feedback?.FeedbackId == f.FeedbackId)
                     {
-                        if (d.DoStatus ==false)
+                        @* if (d.DoStatus ==false) *@
+                        if (d.DoStatus == 0)
                         {
                             <a href="/Feedbacks/DoFeedback/@f.FeedbackId"> Do</a>
                         }
-                        else
+                        else if (d.DoStatus == 1)
                         {
                             <a href="/Feedbacks/EditFeedback/@f.FeedbackId"> Edit</a>
+                        }
+                        else
+                        {
+                            <p>Can't edit more than one time edit</p>
                         }
                     }
                 }
