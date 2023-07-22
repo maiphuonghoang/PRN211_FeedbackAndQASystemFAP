@@ -1,0 +1,30 @@
+﻿<style>
+    .img-size {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Pager</title>
+</head>
+<body>
+    <h1>Image Pager</h1>
+    <div>
+        <img class="img-size" src="@ViewBag.CurrentImage" alt="Image" />
+    </div>
+    <div>
+        <div >
+            <a asp-action="Index" asp-route-pageNumber="@(ViewBag.PageNumber - 1)"
+               disabled="@(ViewBag.PageNumber == 1)">Previous</a>
+        </div>
+        <div>
+            <a asp-action="Index" asp-route-pageNumber="@(ViewBag.PageNumber + 1)"
+               disabled="@(ViewBag.PageNumber == ViewBag.TotalPages)">Next</a>
+        </div>
+        
+    </div>
+</body>
+</html>

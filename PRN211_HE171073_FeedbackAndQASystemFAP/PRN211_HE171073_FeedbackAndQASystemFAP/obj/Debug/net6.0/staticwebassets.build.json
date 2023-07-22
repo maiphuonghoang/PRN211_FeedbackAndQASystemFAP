@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q7peo2tyyZkxcv0lmiT1NBloj9S42Lvz2pK9iVPLc2s=",
+  "Hash": "ZTfGIbBn45B9uMy/wLvziw3GBsRyoL+7xbBodhmRmKI=",
   "Source": "PRN211_HE171073_FeedbackAndQASystemFAP",
   "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
   "Mode": "Default",
@@ -219,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\file\\question\\20230718222312HE171073.docx"
+    },
+    {
+      "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\img\\anbv.jpg",
+      "SourceId": "PRN211_HE171073_FeedbackAndQASystemFAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\",
+      "BasePath": "_content/PRN211_HE171073_FeedbackAndQASystemFAP",
+      "RelativePath": "img/anbv.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\anbv.jpg"
     },
     {
       "Identity": "D:\\SUMMER_2023_FPT\\PRN211\\PRN211_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\PRN211_HE171073_FeedbackAndQASystemFAP\\wwwroot\\img\\FPT_logo_2010.svg.png",
