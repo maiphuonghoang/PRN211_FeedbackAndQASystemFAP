@@ -64,6 +64,7 @@ namespace PRN211_HE171073_FeedbackAndQASystemFAP.Controllers
         public IActionResult StudentFeedback()
         {
             DateTime today = DateTime.Now;
+            //today = new DateTime(2023, 07, 07, 15, 30, 45);
             string roll = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
             var feedbackIds = _context.Dos
             .Where(d => d.StudentId.Equals(roll))
